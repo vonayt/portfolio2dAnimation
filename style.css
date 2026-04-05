@@ -1,48 +1,155 @@
-/* Navigasi */
-header nav {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Helvetica', Arial, sans-serif;
+}
+
+body {
+    background-color: #000; /* Latar belakang hitam agar fokus ke karya */
+}
+
+/* Header & Navigasi */
+header {
+    background-color: #111;
+    color: #fff;
+    padding: 20px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav {
     display: flex;
     justify-content: space-between;
-    padding: 20px;
-    background: #000;
+    align-items: center;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: #888;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
     color: #fff;
 }
 
-/* Grid Portofolio */
+.social-icons {
+    display: flex;
+    gap: 15px;
+    border-left: 1px solid #333;
+    padding-left: 15px;
+}
+
+/* Grid Portfolio */
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Membuat 4 kolom */
-    gap: 0; /* Tanpa jarak antar gambar seperti di contoh */
+    grid-template-columns: repeat(4, 1fr); /* 4 Kolom di Desktop */
+    gap: 2px;
 }
 
 .portfolio-item {
     position: relative;
+    aspect-ratio: 16 / 9;
     overflow: hidden;
+    cursor: pointer;
 }
 
-.portfolio-item img {
+.portfolio-item img, .portfolio-item video {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Agar gambar tidak gepeng */
-    display: block;
+    object-fit: cover;
 }
 
-/* Efek Hover (Teks muncul saat kursor di atas gambar) */
 .overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.6);
-    color: white;
+    background: rgba(0,0,0,0.7);
+    color: #fff;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     opacity: 0;
     transition: 0.3s;
+    text-align: center;
+    padding: 10px;
 }
 
 .portfolio-item:hover .overlay {
     opacity: 1;
+}
+
+/* Modal Pop-up */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.95);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    display: flex;
+    width: 90%;
+    max-width: 1100px;
+    background: #111;
+    border: 1px solid #333;
+    color: #fff;
+}
+
+.video-container { flex: 2; }
+.video-container video, .video-container img { width: 100%; display: block; }
+
+.modal-text {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #fff;
+    font-size: 35px;
+    cursor: pointer;
+}
+
+/* --- RESPONSIVE (HP & TABLET) --- */
+@media (max-width: 1024px) {
+    .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 650px) {
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .modal-content { flex-direction: column; }
+    header { padding: 15px; }
+    nav { flex-direction: column; gap: 15px; }
+    .social-icons { border-left: none; padding-left: 0; }
 }
