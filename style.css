@@ -65,7 +65,7 @@ nav {
 
 .portfolio-item {
     position: relative;
-    aspect-ratio: 16/9;
+    aspect-ratio: 4/3;
     cursor: pointer;
     overflow: hidden;
 }
