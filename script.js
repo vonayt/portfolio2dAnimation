@@ -4,10 +4,10 @@ function openModal(src, title, desc) {
     
     // Logika deteksi file video atau gambar
     if (src.toLowerCase().endsWith('.mp4')) {
-        mediaContainer.innerHTML = `<video controls autoplay style="width:100%"><source src="${src}" type="video/mp4"></video>`;
-    } else {
-        mediaContainer.innerHTML = `<img src="${src}" style="width:100%">`;
-    }
+    mediaContainer.innerHTML = `<video controls autoplay style="width:100%; display:block;"><source src="${src}" type="video/mp4"></video>`;
+} else {
+    mediaContainer.innerHTML = `<img src="${src}" style="width:100%; display:block;">`;
+}
     
     document.getElementById('modalTitle').innerText = title;
     document.getElementById('modalDesc').innerText = desc;
