@@ -87,57 +87,63 @@ nav {
     padding: 20px;
 }
 
-./* MODAL CONTENT - Memastikan tinggi mengikuti konten */
+/* Container Utama Modal (Kotak Hitam) */
 .modal-content {
     display: flex;
-    flex-direction: row;
-    width: 90%; /* Lebar modal */
+    flex-direction: row; /* Kiri media, Kanan teks */
+    width: 95%;
     max-width: 1100px;
-    height: auto; /* Biarkan tinggi menyesuaikan isi */
-    max-height: 85vh; /* Jangan sampai melebihi layar */
     background: #111;
-    border: 1px solid #333;
-    overflow: hidden;
     position: relative;
-    align-items: stretch; /* Menyamakan tinggi video dan teks */
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid #333;
 }
 
-/* CONTAINER VIDEO - Menjaga Rasio 16:9 */
-.video-container {
-    flex: 2.5; 
+/* Bagian Media (Kiri) */
+#modalMedia {
+    flex: 2; /* Bagian video lebih lebar */
     background: #000;
     display: flex;
-    align-items: center; /* Video di tengah secara vertikal */
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
+    align-items: center;
 }
 
-/* MEDIA DALAM MODAL */
-#modalMedia video, #modalMedia img {
+#modalMedia video, 
+#modalMedia img, 
+#modalMedia iframe {
     width: 100%;
-    height: 100%;
+    aspect-ratio: 16/9;
+    object-fit: contain;
     display: block;
-    object-fit: contain; /* KUNCI: Menjaga rasio asli agar tidak gepeng */
-    aspect-ratio: 16 / 9; /* Memaksa rasio 16:9 */
 }
 
+/* Bagian Teks (Kanan) */
 .modal-text {
-    flex: 1;
-    padding: 30px;
-    color: #fff;
+    flex: 1; /* Bagian teks lebih ramping */
+    padding: 50px 30px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    background: #111;
-    border-left: 1px solid #333;
+    justify-content: center; /* Teks di tengah secara vertikal */
+    color: white;
+    background: #181818;
 }
 
-.close-btn {
-    position: absolute;
-    top: 15px; right: 25px;
-    color: #fff; font-size: 30px; cursor: pointer;
-    z-index: 10001;
+.modal-text h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.modal-text p {
+    font-size: 1.1rem;
+    color: #bbb;
+    line-height: 1.6;
+}
+
+/* Jika dibuka di HP, susunan jadi atas-bawah */
+@media (max-width: 768px) {
+    .modal-content { flex-direction: column; }
+    .modal-text { padding: 20px; }
 }
 
 /* RESPONSIF HP (AUTO LAYOUT HP) */
