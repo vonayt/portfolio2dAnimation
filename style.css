@@ -2,18 +2,18 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Helvetica', Poppins, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    background-color: #000;
+    background-color: #050505;
+    color: white;
 }
 
-/* Header & Navigasi */
+/* Header & Nav */
 header {
-    background-color: #111;
-    color: #fff;
-    padding: 20px 40px;
+    padding: 20px 50px;
+    background: rgba(0,0,0,0.8);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -25,29 +25,27 @@ nav {
     align-items: center;
 }
 
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-    align-items: center;
-}
-
-.nav-links a { color: #888; text-decoration: none; font-size: 14px; }
-.social-icons { display: flex; gap: 15px; border-left: 1px solid #333; padding-left: 15px; }
-.social-icons a { color: #fff; font-size: 18px; }
+.logo { font-size: 1.5rem; font-weight: bold; letter-spacing: 2px; }
+.nav-links { display: flex; list-style: none; align-items: center; }
+.nav-links li { margin-left: 30px; }
+.nav-links a { color: white; text-decoration: none; text-transform: uppercase; font-size: 0.9rem; }
+.social-icons i { font-size: 1.2rem; margin-left: 15px; transition: 0.3s; }
+.social-icons i:hover { color: #aaa; }
 
 /* Grid Portfolio */
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* DESKTOP: 4 KOLOM */
-    gap: 2px;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 15px;
+    padding: 20px;
 }
 
 .portfolio-item {
     position: relative;
-    aspect-ratio: 16 / 9;
-    cursor: pointer;
+    aspect-ratio: 16/9;
+    background: #111;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .portfolio-item img, .portfolio-item video {
@@ -63,7 +61,6 @@ nav {
     width: 100%;
     height: 100%;
     background: rgba(0,0,0,0.7);
-    color: #fff;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -74,81 +71,64 @@ nav {
 
 .portfolio-item:hover .overlay { opacity: 1; }
 
-/* MODAL / POP-UP (FIXED GEPENG) */
+/* MODAL SYSTEM (SPLIT LAYOUT) */
 .modal {
     display: none;
     position: fixed;
-    z-index: 9999;
-    left: 0; top: 0;
+    top: 0; left: 0;
     width: 100%; height: 100%;
     background: rgba(0,0,0,0.95);
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    z-index: 1000;
 }
 
-/* Container Utama Modal (Kotak Hitam) */
 .modal-content {
     display: flex;
-    flex-direction: row; /* Kiri media, Kanan teks */
-    width: 95%;
+    flex-direction: row; /* Media Kiri, Teks Kanan */
+    width: 90%;
     max-width: 1100px;
-    background: #111;
-    position: relative;
+    background: #181818;
     border-radius: 4px;
     overflow: hidden;
     border: 1px solid #333;
 }
 
-/* Bagian Media (Kiri) */
 #modalMedia {
-    flex: 2; /* Bagian video lebih lebar */
+    flex: 2;
     background: #000;
     display: flex;
     align-items: center;
 }
 
-#modalMedia video, 
-#modalMedia img, 
-#modalMedia iframe {
+#modalMedia video, #modalMedia img, #modalMedia iframe {
     width: 100%;
     aspect-ratio: 16/9;
-    object-fit: contain;
     display: block;
+    object-fit: contain;
 }
 
-/* Bagian Teks (Kanan) */
 .modal-text {
-    flex: 1; /* Bagian teks lebih ramping */
-    padding: 50px 30px;
+    flex: 1;
+    padding: 40px;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Teks di tengah secara vertikal */
+    justify-content: center;
+}
+
+.modal-text h2 { font-size: 1.8rem; margin-bottom: 15px; }
+.modal-text p { color: #bbb; line-height: 1.6; font-size: 1rem; }
+
+.close-btn {
+    position: absolute;
+    top: 20px; right: 30px;
+    font-size: 40px;
     color: white;
-    background: #181818;
+    cursor: pointer;
 }
 
-.modal-text h2 {
-    font-size: 2rem;
-    margin-bottom: 15px;
-    font-weight: bold;
-}
-
-.modal-text p {
-    font-size: 1.1rem;
-    color: #bbb;
-    line-height: 1.6;
-}
-
-/* Jika dibuka di HP, susunan jadi atas-bawah */
+/* Responsif Mobile (Tumpuk Ke Bawah) */
 @media (max-width: 768px) {
     .modal-content { flex-direction: column; }
     .modal-text { padding: 20px; }
-}
-
-/* RESPONSIF HP (AUTO LAYOUT HP) */
-@media (max-width: 800px) {
-    .portfolio-grid { grid-template-columns: 1fr; } /* JADI 1 KOLOM */
-    .modal-content { flex-direction: column; } /* TEKS PINDAH KE BAWAH VIDEO */
-    nav { flex-direction: column; gap: 10px; }
 }
