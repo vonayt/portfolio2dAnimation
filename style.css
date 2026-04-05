@@ -2,11 +2,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Helvetica', Arial, sans-serif;
+    font-family: 'Helvetica', Poppins, sans-serif;
 }
 
 body {
-    background-color: #000; /* Latar belakang hitam agar fokus ke karya */
+    background-color: #000;
 }
 
 /* Header & Navigasi */
@@ -25,49 +25,29 @@ nav {
     align-items: center;
 }
 
-.logo {
-    font-size: 22px;
-    font-weight: bold;
-    letter-spacing: 1px;
-}
-
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 25px;
+    gap: 20px;
     align-items: center;
 }
 
-.nav-links a {
-    color: #888;
-    text-decoration: none;
-    font-size: 14px;
-    transition: 0.3s;
-}
-
-.nav-links a:hover {
-    color: #fff;
-}
-
-.social-icons {
-    display: flex;
-    gap: 15px;
-    border-left: 1px solid #333;
-    padding-left: 15px;
-}
+.nav-links a { color: #888; text-decoration: none; font-size: 14px; }
+.social-icons { display: flex; gap: 15px; border-left: 1px solid #333; padding-left: 15px; }
+.social-icons a { color: #fff; font-size: 18px; }
 
 /* Grid Portfolio */
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 Kolom di Desktop */
+    grid-template-columns: repeat(4, 1fr); /* DESKTOP: 4 KOLOM */
     gap: 2px;
 }
 
 .portfolio-item {
     position: relative;
     aspect-ratio: 16 / 9;
-    overflow: hidden;
     cursor: pointer;
+    overflow: hidden;
 }
 
 .portfolio-item img, .portfolio-item video {
@@ -90,100 +70,62 @@ nav {
     align-items: center;
     opacity: 0;
     transition: 0.3s;
-    text-align: center;
-    padding: 10px;
 }
 
-.portfolio-item:hover .overlay {
-    opacity: 1;
-}
+.portfolio-item:hover .overlay { opacity: 1; }
 
-/* Modal Pop-up */
-/* Perbaikan Modal agar Proporsional */
-.modal-content {
-    display: flex;
-    width: 90%;
-    max-width: 1000px; /* Lebar maksimal kotak */
-    height: auto;
-    max-height: 85vh; /* Agar tidak melebihi tinggi layar */
-    background: #111;
-    border: 1px solid #333;
-    color: #fff;
-    overflow: hidden; /* Agar sudutnya rapi */
-    box-shadow: 0 10px 50px rgba(0,0,0,0.5);
-}
-
-.video-container {
-    flex: 2.5; /* Memberi ruang lebih besar untuk video (70%) */
-    background: #000;
-    display: flex;
-    align-items: center; /* Video di tengah secara vertikal */
+/* MODAL / POP-UP (FIXED GEPENG) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.95);
     justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
+.modal-content {
+    display: flex; /* MEMBUAT VIDEO DI KIRI, TEKS DI KANAN */
+    flex-direction: row;
+    width: 100%;
+    max-width: 1100px;
+    background: #0a0a0a;
+    border: 1px solid #333;
+    overflow: hidden;
+    position: relative;
+}
+
+.video-container { flex: 2.5; background: #000; }
 .video-container video, .video-container img {
     width: 100%;
     height: auto;
-    max-height: 100%;
-    object-fit: contain; /* Agar video tidak terpotong */
+    display: block;
+    object-fit: contain; /* MENJAGA RASIO VIDEO */
 }
 
 .modal-text {
-    flex: 1; /* Ruang lebih kecil untuk teks (30%) */
-    padding: 30px;
+    flex: 1;
+    padding: 40px;
+    color: #fff;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border-left: 1px solid #222;
-    background: #0a0a0a;
-}
-
-.modal-text h2 {
-    font-size: 24px;
-    margin-bottom: 15px;
-    color: #fff;
-}
-
-.modal-text p {
-    font-size: 14px;
-    line-height: 1.6;
-    color: #bbb;
-}
-
-/* Responsif untuk HP: Teks pindah ke bawah video */
-@media (max-width: 800px) {
-    .modal-content {
-        flex-direction: column;
-        width: 95%;
-        max-height: 90vh;
-        overflow-y: auto; /* Bisa di-scroll jika teks panjang */
-    }
-    
-    .modal-text {
-        border-left: none;
-        border-top: 1px solid #222;
-        padding: 20px;
-    }
+    background: #111;
 }
 
 .close-btn {
     position: absolute;
-    top: 20px;
-    right: 30px;
-    color: #fff;
-    font-size: 35px;
-    cursor: pointer;
+    top: 15px; right: 25px;
+    color: #fff; font-size: 30px; cursor: pointer;
+    z-index: 10001;
 }
 
-/* --- RESPONSIVE (HP & TABLET) --- */
-@media (max-width: 1024px) {
-    .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 650px) {
-    .portfolio-grid { grid-template-columns: 1fr; }
-    .modal-content { flex-direction: column; }
-    header { padding: 15px; }
-    nav { flex-direction: column; gap: 15px; }
-    .social-icons { border-left: none; padding-left: 0; }
+/* RESPONSIF HP (AUTO LAYOUT HP) */
+@media (max-width: 800px) {
+    .portfolio-grid { grid-template-columns: 1fr; } /* JADI 1 KOLOM */
+    .modal-content { flex-direction: column; } /* TEKS PINDAH KE BAWAH VIDEO */
+    nav { flex-direction: column; gap: 10px; }
 }
