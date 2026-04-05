@@ -27,17 +27,18 @@ function openModal(src, title, desc) {
         mediaContainer.innerHTML = `
             <img src="${src}" style="width:100%; aspect-ratio: 16/9; object-fit: cover;">`;
     } 
-    else {
-        // --- FORMAT UNTUK YOUTUBE (Jika input adalah ID Video) ---
-        // Menambahkan parameter autoplay, mute, dan loop khusus YouTube
-        mediaContainer.innerHTML = `
-            <iframe 
-                style="width:100%; aspect-ratio: 16/9;" 
-                src="https://www.youtube.com/embed/${src}?autoplay=1&mute=1&loop=1&playlist=${src}&controls=1" 
-                frameborder="0" 
-                allow="autoplay; encrypted-media; picture-in-picture" 
-                allowfullscreen>
-            </iframe>`;
+    } else {
+    // FORMAT YOUTUBE: Ditambahkan parameter loop & playlist agar bisa mengulang
+    // playlist=${src} wajib ada agar fitur loop YouTube aktif untuk video tunggal
+    mediaContainer.innerHTML = `
+        <iframe 
+            style="width:100%; aspect-ratio: 16 / 9; display: block; object-fit: cover;" 
+            src="https://www.youtube.com/embed/${src}?autoplay=1&mute=1&loop=1&playlist=${src}&controls=1&rel=0" 
+            frameborder="0" 
+            allow="autoplay; encrypted-media; picture-in-picture" 
+            allowfullscreen>
+        </iframe>`;
+}
     }
     
     // 3. Masukkan Judul dan Deskripsi
