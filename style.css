@@ -1,207 +1,247 @@
-/* ==========================================
-   1. SETUP FONTS & DASAR
-   ========================================== */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;500&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+header {
+    font-family: "Roboto", sans-serif;
+    padding: 20px;
+    display: flex;
+    align-content: flex-start;
+    align-items: center;
+    justify-content: space-between;
+    color: #f1f1f1;
+    z-index: 1;
+    background-color: rgba(18,18,18,0.9)
 }
+
+h1,h2,h3,h4,p,a {
+    font-family: "Roboto", sans-serif;
+    color: white
+}
+
+h2 {
+    margin: 0
+}
+
+.title {
+    float: left
+}
+
+.title>img {
+    width: 100%
+}
+
+.extras {
+    display: flex;
+    float: right;
+    align-items: center
+}
+
+.pages {
+    padding-inline:10px}
+
+.pages>a {
+    padding-inline:2px}
+
+i:hover {
+    opacity: 0.5
+}
+
+.icons {
+    padding-inline:10px}
 
 body {
-    background-color: #050505;
-    color: white;
-    font-family: 'Roboto', sans-serif;
-    overflow-x: hidden;
+    background-color: #121212;
+    margin: 0
 }
 
-h1, h2, h3 { font-family: 'Poppins', sans-serif; }
-
-/* ==========================================
-   2. HEADER & NAVIGASI
-   ========================================== */
-header {
-    padding: 15px 5%;
-    background: #000;
-    border-bottom: 1px solid #1a1a1a;
-}
-
-nav {
+.gallery {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-}
-
-.logo { font-size: 1.5rem; font-weight: 700; font-family: 'Poppins'; }
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    align-items: center;
-    gap: 20px;
-}
-
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    font-size: 14px;
-    text-transform: lowercase;
-}
-
-.social-icons { display: flex; gap: 15px; }
-
-/* ==========================================
-   3. GRID PORTFOLIO
-   ========================================== */
-/* --- 1. PENGATURAN GRID DASAR --- */
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); 
-    gap: 0; 
-    padding: 0;
-    width: 100%;
-    /* Memastikan grid berada di tengah jika ada ruang sisa */
-    margin: 0 auto; 
-    max-width: 1400px; 
-}
-
-/* --- 2. PERBAIKAN MEDIA (GIF & VIDEO) --- */
-.portfolio-item {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 4 / 3; /* Menjaga rasio 4:3 sesuai keinginanmu */
-    overflow: hidden;
-    background-color: #000;
-}
-
-.portfolio-item img, 
-.portfolio-item video,
-.video-preview {
-    width: 100%;
-    height: 100%;
-    /* Gunakan 'cover' agar kotak penuh, namun jika GIF terasa terlalu zoom, 
-       pastikan resolusi file aslimu adalah 4:3 saat export */
-    object-fit: cover; 
-    display: block;
-}
-
-/* --- 3. AUTO LAYOUT KHUSUS IPAD (DENGAN CELAH SAMPING) --- */
-
-/* Mode iPad Landscape (3 Kolom dengan Margin) */
-@media (max-width: 1024px) {
-    .portfolio-grid {
-        grid-template-columns: repeat(3, 1fr);
-        /* Memberikan celah 5% di kiri dan 5% di kanan */
-        width: 90%; 
-        max-width: 900px;
-    }
-}
-
-/* Mode iPad Portrait (2 Kolom dengan Margin) */
-@media (max-width: 768px) {
-    .portfolio-grid {
-        grid-template-columns: repeat(2, 1fr);
-        /* Memberikan celah agar tidak menempel ke pinggir layar */
-        width: 85%; 
-    }
-}
-
-/* Mode Smartphone (Kembali Full agar tidak terlalu kecil) */
-@media (max-width: 480px) {
-    .portfolio-grid {
-        grid-template-columns: 1fr;
-        width: 100%;
-    }
-}
-
-/* Overlay Hover */
-.overlay {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.7);
-    display: flex;
     justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: 0.3s ease;
+    flex-wrap: wrap
 }
 
-.portfolio-item:hover .overlay { opacity: 1; }
+.example {
+    width: 380px;
+    height: 280px;
+    font-family: Poppins
+}
 
-/* ==========================================
-   4. MODAL SYSTEM (Overlay Transparan & Blur)
-   ========================================== */
+.example>img {
+    width: inherit;
+    height: inherit;
+    object-fit: cover;
+    position: absolute;
+    border-radius: inherit
+}
+
+.example>video {
+    width: inherit;
+    height: inherit;
+    object-fit: cover;
+    position: absolute;
+    border-radius: inherit
+}
+
+.example:hover>img {
+    opacity: 0.5
+}
+
+.example:hover>video {
+    opacity: 0.5
+}
+
+.exampleInfo {
+    color: white;
+    width: inherit;
+    height: inherit;
+    position: relative;
+    border-radius: inherit;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: 20px;
+    opacity: 0;
+    justify-content: center;
+    flex-direction: row
+}
+
+.info1>h4 {
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.exampleInfo:hover {
+    opacity: 1
+}
+
 .modal {
     display: none;
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    /* MODIFIKASI: Latar belakang transparan */
-    background: rgba(0, 0, 0, 0.7); 
-    /* Efek Blur Glassmorphism */
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    z-index: 9999;
-    justify-content: center;
-    align-items: center;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(18,18,18,0.9)
 }
 
 .modal-content {
+    position: relative;
+    margin: auto;
+    padding: 0;
+    width: 90%
+}
+
+.close {
+    color: white;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 35px;
+    font-weight: bold
+}
+
+.close:hover,.close:focus {
+    color: #999;
+    text-decoration: none;
+    cursor: pointer
+}
+
+.mySlides {
+    display: none;
+    align-items: center;
+    flex-direction: row
+}
+
+.cursor {
+    cursor: pointer
+}
+
+.column {
     display: flex;
     flex-direction: row;
-    width: 90%;
-    max-width: 1100px;
-    background: #111;
-    border: 1px solid #2a2a2a;
-    margin: auto;
-    overflow: hidden;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-}
-
-#modalMedia { flex: 2; background: #000; display: flex; align-items: center; }
-#modalMedia video, #modalMedia img { width: 100%; display: block; }
-
-.modal-text {
-    flex: 1;
-    padding: 40px 30px;
-    display: flex;
-    flex-direction: column;
+    align-content: center;
     justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    overflow-x: scroll
 }
 
-.close-btn {
-    position: absolute;
-    top: 20px; right: 25px;
-    font-size: 35px;
+.democursor {
+    width: 25%
+}
+
+.prev,.next {
     color: white;
-    cursor: pointer;
-    z-index: 10001;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none
 }
 
-/* ==========================================
-   5. RESPONSIVE MOBILE
-   ========================================== */
-@media (max-width: 768px) {
-    .portfolio-grid {
-        grid-template-columns: 1fr; 
+.next {
+    float: right
+}
+
+.prev:hover,.next:hover {
+    background-color: rgba(0,0,0,0.8)
+}
+
+.caption-container {
+    width: 360px;
+    padding-inline:15px;color: white;
+    margin: 15px
+}
+
+.video-container,.image-container {
+    padding-inline:15px;width: 840px;
+    height: auto
+}
+
+.content {
+    width: 100%
+}
+
+@media only screen and (max-width: 720px) {
+    .mySlides {
+        flex-direction:column
     }
 
-    nav {
-        flex-direction: column;
-        gap: 15px;
+    .video-container {
+        padding-inline:0px;width: auto;
+        height: auto
     }
 
     .modal-content {
-        flex-direction: column;
-        width: 95%;
-        max-height: 90vh;
-        overflow-y: auto;
+        width: 100%
     }
 
-    .modal-text {
-        text-align: center;
-        padding: 20px;
+    .caption-container {
+        width: 75%
     }
+}
+
+a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding-inline:10px}
+
+a:hover {
+    opacity: 0.5
+}
+
+.bio {
+    display: flex
+}
+
+.bio>.text {
+    width: 60%;
+    padding: 5%
+}
+
+.bio>.image {
+    width: 100%;
+    background-color: white
 }
