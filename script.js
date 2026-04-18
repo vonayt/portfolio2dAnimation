@@ -1,48 +1,59 @@
-// Navigasi
-const btnAnim = document.getElementById('nav-animation');
-const btnAbout = document.getElementById('nav-about');
-const secAnim = document.getElementById('section-animation');
-const secAbout = document.getElementById('section-about');
+function openModal(src, title, desc) {
+    const modal = document.getElementById('videoModal');
+    const mediaContainer = document.getElementById('modalMedia');
+    
+    // 1. Bersihkan isi lama
+    mediaContainer.innerHTML = '';
 
-btnAnim.addEventListener('click', (e) => {
-    e.preventDefault();
-    secAnim.classList.remove('hidden');
-    secAbout.classList.add('hidden');
-    btnAnim.classList.add('active');
-    btnAbout.classList.remove('active');
-});
+    // 2. Deteksi Format File
+    const isVideo = src.toLowerCase().endsWith('.mp4');
+    const isImage = src.toLowerCase().endsWith('.gif') || 
+                    src.toLowerCase().endsWith('.jpg') || 
+                    src.toLowerCase().endsWith('.png');
 
-btnAbout.addEventListener('click', (e) => {
-    e.preventDefault();
-    secAbout.classList.remove('hidden');
-    secAnim.classList.add('hidden');
-    btnAbout.classList.add('active');
-    btnAnim.classList.remove('active');
-});
+    if (isVideo) {
+        // --- FORMAT VIDEO LOKAL ---
+        mediaContainer.innerHTML = `
+            <video id="vPlayer" controls autoplay muted loop playsinline style="width:100%;">
+                <source src="${src}" type="video/mp4">
+            </video>`;
+        document.getElementById('vPlayer').load();
+    } 
+    else if (isImage) {
+        // --- FORMAT GAMBAR / GIF ---
+        mediaContainer.innerHTML = `<img src="${src}" style="width:100%;">`;
+    } 
+    else {
+        // --- FORMAT YOUTUBE (Looping Aktif) ---
+        mediaContainer.innerHTML = `
+            <iframe 
+                style="width:100%; aspect-ratio: 16/9;" 
+                src="https://www.youtube.com/embed/${src}?autoplay=1&mute=1&loop=1&playlist=${src}&rel=0" 
+                frameborder="0" 
+                allow="autoplay; encrypted-media; picture-in-picture" 
+                allowfullscreen>
+            </iframe>`;
+    }
 
-// Pop-up Logic
-const overlay = document.getElementById('video-overlay');
-const mainVideo = document.getElementById('main-video');
-const videoTitle = document.getElementById('video-title');
-const videoDesc = document.getElementById('video-desc');
-const closeBtn = document.getElementById('close-overlay');
+    // 3. Update Teks Deskripsi
+    document.getElementById('modalTitle').innerText = title;
+    document.getElementById('modalDesc').innerText = desc;
 
-document.querySelectorAll('.grid-item').forEach(item => {
-    item.addEventListener('click', () => {
-        videoTitle.innerText = item.getAttribute('data-title');
-        videoDesc.innerText = item.getAttribute('data-desc');
-        mainVideo.src = item.getAttribute('data-video');
-        overlay.classList.add('show');
-    });
-});
+    // 4. Tampilkan Modal
+    modal.style.display = 'flex';
+}
 
-closeBtn.addEventListener('click', () => {
-    overlay.classList.remove('show');
-    mainVideo.pause();
-    mainVideo.src = "";
-});
+function closeModal() {
+    const modal = document.getElementById('videoModal');
+    const mediaContainer = document.getElementById('modalMedia');
+    modal.style.display = 'none';
+    mediaContainer.innerHTML = ''; // Penting agar suara video mati saat ditutup
+}
 
-// Klik di luar kotak untuk tutup
-overlay.addEventListener('click', (e) => {
-    if(e.target === overlay) closeBtn.click();
-});
+// Tutup modal jika area luar kotak diklik
+window.onclick = function(event) {
+    const modal = document.getElementById('videoModal');
+    if (event.target == modal) {
+        closeModal();
+    }
+}
