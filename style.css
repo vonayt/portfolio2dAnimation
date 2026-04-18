@@ -169,40 +169,42 @@ nav {
 /* Styling About Me */
 /* --- BAGIAN ABOUT ME (GANTI KODE LAMA DENGAN INI) --- */
 
-#page-about {
-    display: none; /* Akan diubah jadi 'flex' oleh JavaScript */
-    padding: 100px 10% 60px;
-    background-color: black;
-    color: white;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-}
+/* --- AUTO LAYOUT UNTUK MOBILE --- */
+@media (max-width: 768px) {
+    #page-about {
+        padding: 80px 5% 40px; /* Kurangi padding agar pas di layar HP */
+    }
 
-.about-container {
-    display: flex;
-    flex-direction: row; /* Layout menyamping */
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 1200px;
-}
+    .about-container {
+        flex-direction: column; /* Mengubah layout dari samping ke atas-bawah */
+        text-align: left; /* Tetap rata kiri untuk teks agar konsisten dengan desainmu */
+        gap: 30px; /* Jarak antara tulisan dan gambar */
+    }
 
-.about-text {
-    flex: 1;
-}
+    .about-text {
+        width: 100%;
+        order: 1; /* Memastikan tulisan muncul pertama (di atas) */
+    }
 
-.about-text h1 {
-    font-size: 4rem;
-    margin-bottom: 20px;
-    font-weight: 800;
-}
+    .about-text h1 {
+        font-size: 3.5rem; /* Ukuran HELLO sedikit lebih kecil agar tidak terpotong */
+        margin-bottom: 15px;
+    }
 
-.about-text p {
-    font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.8);
-    line-height: 1.6;
-    margin-bottom: 5px;
+    .about-visual {
+        width: 100%;
+        order: 2; /* Memastikan gambar muncul kedua (di bawah) */
+        display: flex;
+        justify-content: center;
+    }
+
+    .about-img {
+        width: 100%; /* Gambar memenuhi lebar layar HP */
+        max-width: none;
+        height: auto;
+        aspect-ratio: 4 / 3; /* Menjaga proporsi gambar kamu tetap 4:3 */
+        object-fit: cover;
+    }
 }
 
 /* --- STYLING EMAIL (LEBIH TEBAL) --- */
