@@ -105,7 +105,63 @@
         </div>
         
     </main>
+<section id="page-about" style="display: none;">
+        <div class="about-container">
+            <div class="about-text">
+                <h1>HELLO</h1>
+                <p>my name is nas! i love making art and animation</p>
+                <p>please reach me from this email below!</p>
+                <p class="email">nasiiijau@gmail.com</p>
+            </div>
+            <div class="about-visual">
+                </div>
+        </div>
+    </section>
 
+    <footer class="footer-social">
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </footer>
+
+    <div id="videoModal" class="modal">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <div id="modalMedia"></div>
+            
+            <div class="modal-text">
+                <h2 id="modalTitle"></h2>
+                <p id="modalDesc"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // SCRIPT UNTUK PINDAH HALAMAN
+        const btnAnim = document.getElementById('nav-animation');
+        const btnAbout = document.getElementById('nav-about');
+        const pageAnim = document.getElementById('page-animation');
+        const pageAbout = document.getElementById('page-about');
+
+        btnAbout.addEventListener('click', (e) => {
+            e.preventDefault();
+            pageAnim.style.display = 'none'; // Sembunyi Gallery
+            pageAbout.style.display = 'flex'; // Muncul About
+            btnAbout.style.color = 'white';
+            btnAnim.style.color = '#666';
+        });
+
+        btnAnim.addEventListener('click', (e) => {
+            e.preventDefault();
+            pageAbout.style.display = 'none'; // Sembunyi About
+            pageAnim.style.display = 'grid'; // Muncul Gallery
+            btnAnim.style.color = 'white';
+            btnAbout.style.color = '#666';
+  
     <div id="videoModal" class="modal">
         <span class="close-btn" onclick="closeModal()">&times;</span>
         <div class="modal-content">
