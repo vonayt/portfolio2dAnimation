@@ -23,7 +23,7 @@
 
     <main class="portfolio-grid">
         <div class="portfolio-item" onclick="openModal('dumpanimasi.mp4/YUTA VS YUJI part 1.mp4', 'Personal work Fan Animation', 'Directing, Storyboard, 2D Animation, Compositing, Background Paint')">
-            <video id="thumb" autoplay loop muted playsinline>
+            <video autoplay loop muted playsinline>
                 <source src="dumpanimasi.mp4/YUTA VS YUJI part 1.mp4" type="video/mp4">
             </video>
             <div class="overlay">
@@ -33,7 +33,7 @@
         </div>
         
         <div class="portfolio-item" onclick="openModal('dumpanimasi.mp4/YUTA VS YUJI part 2 (1).mp4', 'Personal work Fan Animation', 'Directing, Storyboard, 2D Animation, Compositing, Background Paint')">
-            <video id="thumb" autoplay loop muted playsinline>
+            <video autoplay loop muted playsinline>
                 <source src="dumpanimasi.mp4/YUTA VS YUJI part 2 (1).mp4" type="video/mp4">
             </video>
             <div class="overlay">
@@ -123,15 +123,6 @@
     <script src="script.js"></script>
     <script>
  
-  const video = document.getElementById('thumb');
-  
-  const start = 1; 
-  const end = 10;
-
-  video1.addEventListener('timeupdate', function() {
-    if (this.currentTime >= end) {
-      this.currentTime = start;
-      this.play();
     }
   });
 </script>
