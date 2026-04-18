@@ -1,4 +1,4 @@
-/* --- 1. IMPORT FONT & RESET --- */
+/* --- 1. RESET & FONT --- */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@300;400&display=swap');
 
 * {
@@ -11,31 +11,34 @@ body {
     background-color: #000;
     color: #fff;
     font-family: 'Poppins', sans-serif;
-    overflow-x: hidden;
 }
 
-/* --- 2. HEADER --- */
+/* --- 2. HEADER (Sangat Tipis & Presisi) --- */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 5%;
+    padding: 15px 4%; /* Sangat tipis sesuai contoh */
     background: #000;
     position: relative;
 }
 
 .logo {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: 600;
+}
+
+nav {
+    display: flex;
+    gap: 20px; /* Jarak rapat antar menu di sebelah kanan */
 }
 
 nav a {
     color: #fff;
     text-decoration: none;
     font-family: 'Roboto', sans-serif;
-    font-size: 0.95rem;
-    text-transform: lowercase;
-    margin-left: 25px;
+    font-size: 0.9rem;
+    text-transform: lowercase; /* animasi & about me huruf kecil */
 }
 
 /* --- 3. GRID (Full Desktop, Margin di iPad) --- */
@@ -57,32 +60,28 @@ nav a {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
 /* --- 4. HOVER EFFECT (Overlay Judul) --- */
 .overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     background: rgba(0, 0, 0, 0.6);
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: 0; /* Sembunyi secara default */
+    opacity: 0;
     transition: opacity 0.3s ease;
 }
 
 .portfolio-item:hover .overlay {
-    opacity: 1; /* Muncul saat mouse di atasnya */
+    opacity: 1;
 }
 
 .overlay-text {
-    font-family: 'Roboto', sans-serif;
+    font-size: 0.9rem;
     text-transform: lowercase;
-    font-size: 1rem;
-    letter-spacing: 1px;
 }
 
 /* --- 5. RESPONSIVE IPAD (Margin Samping) --- */
@@ -102,93 +101,95 @@ nav a {
     }
 }
 
-/* --- 6. SPLIT MODAL (POP-UP) --- */
+/* --- 6. SPLIT MODAL (Teks Tidak Rapat ke Video) --- */
 .modal {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.95);
     z-index: 9999;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 40px;
 }
 
 .modal-content {
-    background: #111;
-    display: flex; /* Split layout: Kiri Video, Kanan Teks */
-    width: 90%;
-    max-width: 1000px;
-    height: auto;
-    max-height: 85vh;
-    border-radius: 4px;
+    background: #000; /* Background hitam pekat */
+    display: flex;
+    width: 100%;
+    max-width: 1100px;
+    max-height: 80vh;
     overflow: hidden;
     position: relative;
 }
 
 .modal-left {
-    flex: 1.5; /* Video lebih lebar */
+    flex: 1.6; /* Area Video */
+    display: flex;
+    align-items: center;
     background: #000;
 }
 
 .modal-left video {
     width: 100%;
-    height: 100%;
-    display: block;
+    max-height: 80vh;
     object-fit: contain;
 }
 
 .modal-right {
     flex: 1;
-    padding: 40px;
+    padding: 0 0 0 50px; /* MEMBERIKAN JARAK LUAS DARI VIDEO */
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: left;
 }
 
 .modal-right h2 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
     text-transform: lowercase;
+    font-weight: 600;
 }
 
 .modal-right p {
     font-family: 'Roboto', sans-serif;
-    font-size: 0.9rem;
-    color: #ccc;
+    font-size: 0.95rem;
+    color: #bbb;
+    line-height: 1.6;
 }
 
 .close-modal {
     position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 24px;
+    top: -10px;
+    right: 0;
+    font-size: 35px;
     color: #fff;
     cursor: pointer;
-    z-index: 10;
+    z-index: 100;
 }
 
-/* Mobile Modal Fix */
+/* Fix Mobile Modal */
 @media (max-width: 768px) {
     .modal-content {
-        flex-direction: column; /* Teks pindah ke bawah video di HP */
+        flex-direction: column;
     }
     .modal-right {
-        padding: 20px;
+        padding: 30px 0 0 0; /* Jarak atas saat mode tumpuk di HP */
     }
 }
 
 /* --- 7. FOOTER --- */
 footer {
-    padding: 60px 20px;
+    padding: 50px 20px;
     text-align: center;
 }
 
 .footer-socials {
     display: flex;
     justify-content: center;
-    gap: 20px;
-    margin-bottom: 10px;
+    gap: 25px;
+    margin-bottom: 15px;
 }
 
 .footer-socials a {
