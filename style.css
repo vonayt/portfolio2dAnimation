@@ -208,12 +208,22 @@ main, section {
 }
 
 /* Styling Footer Center Layout */
+/* Pastikan body menggunakan flex agar footer konsisten di bawah */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
 .footer-social {
     width: 100%;
-    padding: 60px 0 40px;
+    margin-top: auto; /* Memastikan footer tetap di bawah */
+    padding: 40px 0;
     background-color: black;
+    /* Membuat konten di dalamnya rata tengah */
     display: flex;
-    justify-content: center; /* Membuat konten ke tengah secara horizontal */
+    justify-content: center; 
     align-items: center;
 }
 
@@ -224,7 +234,8 @@ main, section {
 }
 
 .social-links-text a {
-    color: #888;
+    /* Warna putih pudar (opacity 0.5) */
+    color: rgba(255, 255, 255, 0.5); 
     text-decoration: none;
     font-size: 13px;
     letter-spacing: 0.5px;
@@ -232,11 +243,12 @@ main, section {
 }
 
 .social-links-text a:hover {
-    color: white;
+    /* Warna putih terang saat kursor di atasnya */
+    color: rgba(255, 255, 255, 1);
 }
 
 .divider {
-    color: #444;
+    /* Warna garis pembagi putih pudar */
+    color: rgba(255, 255, 255, 0.3);
     margin: 0 10px;
-}
 }
