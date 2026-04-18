@@ -228,25 +228,90 @@ nav {
     align-items: center;
 }
 
-.about-img {
-    width: 100%;
-    max-width: 500px; /* Batas lebar gambar */
-    height: auto;
-    border-radius: 10px; /* Sudut melengkung halus */
-    object-fit: cover;
+/* --- VERSI TERBARU: ABOUT ME LAYOUT --- */
+
+#page-about {
+    display: none; /* Diubah jadi 'flex' lewat JS saat tombol diklik */
+    padding: 80px 10%;
+    background-color: black;
+    color: white;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Responsif untuk HP */
+.about-container {
+    display: flex;
+    flex-direction: row; /* Posisi menyamping untuk desktop */
+    align-items: center;
+    gap: 50px;
+    width: 100%;
+    max-width: 1100px;
+}
+
+.about-text {
+    flex: 1.2; /* Memberikan ruang lebih besar untuk teks */
+}
+
+.about-text h1 {
+    font-size: 4.5rem;
+    margin-bottom: 20px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 10px;
+}
+
+/* Email Styling */
+.email-link a {
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.2rem;
+    display: inline-block;
+    margin-top: 10px;
+    border-bottom: 2px solid white; /* Efek garis bawah agar menonjol */
+}
+
+.about-visual {
+    flex: 1; /* Ruang seimbang untuk gambar */
+    display: flex;
+    justify-content: center;
+}
+
+.about-img {
+    width: 100%;
+    height: auto;
+    max-width: 450px;
+    border-radius: 12px;
+    object-fit: cover;
+    /* Mencegah gambar menjadi penyet atau tipis */
+    aspect-ratio: 4 / 3; 
+}
+
+/* --- AUTO LAYOUT UNTUK MOBILE (AGAR TIDAK RUSAK) --- */
 @media (max-width: 768px) {
     .about-container {
-        flex-direction: column; /* Gambar pindah ke bawah teks di HP */
-        text-align: center;
+        flex-direction: column; /* Teks di atas, gambar di bawah */
+        text-align: left;
+        gap: 40px;
     }
-    
+
     .about-text h1 {
-        font-size: 3rem;
+        font-size: 3.5rem;
     }
-}/
+
+    .about-visual {
+        width: 100%;
+    }
+
+    .about-img {
+        max-width: 100%;
+    }
 }
 
 /* --- Tambahkan di bagian paling bawah file style.css --- */
