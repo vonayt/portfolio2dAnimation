@@ -103,24 +103,45 @@
         </div>
         
     </main>
-
-    <div id="videoModal" class="modal">
-        <span class="close-btn" onclick="closeModal()">&times;</span>
-        <div class="modal-content">
-            <div id="modalMedia"></div>
-            
-            <div class="modal-text">
-                <h2 id="modalTitle"></h2>
-                <p id="modalDesc"></p>
+<section id="section-about" class="hidden">
+            <div class="split-layout">
+                <div class="split-left">
+                    <h1>HELLO</h1>
+                    <p>my name is nas! i love making art and animation</p>
+                    <p>please reach me from this email below!</p>
+                    <a href="mailto:nasiiijau@gmail.com" class="email-link">nasiiijau@gmail.com</a>
+                </div>
+                <div class="split-right">
+                    <div class="profile-box"></div>
+                </div>
             </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="social-icons">
+            <a href="#"><img src="twitter-icon.png" alt="Twitter"></a>
+            <a href="#"><img src="behance-icon.png" alt="Behance"></a>
+            <a href="#"><img src="youtube-icon.png" alt="YouTube"></a>
+            <a href="#"><img src="linkedin-icon.png" alt="LinkedIn"></a>
+            <a href="#"><img src="instagram-icon.png" alt="Instagram"></a>
+        </div>
+    </footer>
+
+    <div id="video-overlay" class="overlay">
+        <div class="overlay-content">
+            <div class="overlay-video-side">
+                <video id="main-video" controls src=""></video>
+            </div>
+            <div class="overlay-text-side">
+                <h2 id="video-title">Title</h2>
+                <p id="video-desc">Description goes here.</p>
+            </div>
+            <button id="close-overlay" class="close-btn">&times;</button>
         </div>
     </div>
 
     <script src="script.js"></script>
-    <script>
- 
-    }
-  });
-</script>
 </body>
 </html>
+  
