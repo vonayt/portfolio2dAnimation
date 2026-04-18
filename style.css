@@ -1,207 +1,158 @@
-kode css 
-/* ==========================================
-   1. IMPORT FONTS (Poppins & Roboto)
-   ========================================== */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;500&display=swap');
+/* --- 1. IMPORT FONT & RESET --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@300;400&display=swap');
 
-/* ==========================================
-   2. DASAR (GENERAL) & RESET
-   ========================================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* Default teks menggunakan Roboto */
-    font-family: 'Roboto', sans-serif; 
 }
 
 body {
-    background-color: #050505;
-    color: white;
-    overflow-x: hidden; /* Mencegah scroll horizontal */
+    background-color: #000;
+    color: #fff;
+    font-family: 'Poppins', sans-serif; /* Menggunakan Poppins sesuai preferensi */
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
-/* Tipografi Judul */
-h1, h2, h3 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-}
-
-/* ==========================================
-   3. HEADER & NAVIGASI (MENGIKUTI REFERENSI)
-   ========================================== */
+/* --- 2. HEADER & NAVIGATION --- */
 header {
-    padding: 15px 5%;
-    background: #000;
-    border-bottom: 1px solid #1a1a1a;
-}
-
-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 20px 5%;
+    background: #000;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .logo {
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: 1px;
-    font-family: 'Poppins', sans-serif;
 }
 
-.nav-links {
-    display: flex;
-    list-style: none;
-    align-items: center;
-    gap: 25px;
-}
-
-/* Link Teks (Contact, Animation) */
-.nav-links a {
-    color: white;
+nav a {
+    color: #fff;
     text-decoration: none;
-    font-size: 14px;
-    font-weight: 400;
-    text-transform: lowercase; /* Seperti di referensi */
-}
-
-/* Ikon Sosial (Menumpuk di kanan) */
-.social-icons {
-    display: flex;
-    gap: 15px;
-    margin-left: 10px;
-}
-
-.social-icons i {
-    font-size: 1rem;
-    color: white;
+    margin-left: 20px;
+    font-family: 'Roboto', sans-serif; /* Roboto untuk navigasi agar terlihat modern */
     transition: 0.3s;
 }
 
-.social-icons i:hover {
+nav a:hover {
     color: #aaa;
 }
 
-/* ==========================================
-   4. GRID PORTFOLIO (DESKTOP: 4 KOLOM TANPA GAP)
-   ========================================== */
+/* --- 3. PORTFOLIO GRID (Auto Layout & Margin iPad) --- */
 .portfolio-grid {
     display: grid;
-    /* MEMAKSA 4 KOLOM DI DESKTOP */
-    grid-template-columns: repeat(4, 1fr); 
-    /* Hilangkan semua celah agar menempel */
+    grid-template-columns: repeat(4, 1fr); /* Desktop: 4 Kolom */
     gap: 0; 
-    padding: 0;
+    width: 100%;
+    max-width: 1400px;
+    margin: 40px auto; /* Memberikan jarak dari header/footer */
 }
 
 .portfolio-item {
     position: relative;
-    /* Rasio 16:9 agar simetris */
-    aspect-ratio: 16/9; 
-    cursor: pointer;
+    aspect-ratio: 4 / 3; /* Mengunci rasio 4:3 */
     overflow: hidden;
+    cursor: pointer;
 }
 
-.portfolio-item img, .portfolio-item video {
+.portfolio-item video, 
+.portfolio-item img {
     width: 100%;
     height: 100%;
-    /* Mengisi kotak tanpa gepeng */
-    object-fit: cover; 
+    object-fit: cover; /* Mencegah gambar gepeng */
     display: block;
 }
 
-/* Overlay muncul saat hover */
+/* Overlay Judul saat Hover */
 .overlay {
     position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.7);
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
     display: flex;
     justify-content: center;
     align-items: center;
     opacity: 0;
-    transition: 0.3s ease;
+    transition: 0.3s;
 }
 
 .portfolio-item:hover .overlay {
     opacity: 1;
 }
 
-.overlay h3 {
-    font-size: 1rem;
-    color: white;
-    text-align: center;
-    padding: 0 10px;
+/* --- 4. RESPONSIVE (iPad & Mobile) --- */
+
+/* iPad Landscape (3 Kolom + Celah Samping) */
+@media (max-width: 1199px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(3, 1fr);
+        width: 90%; /* Memberikan celah samping seperti permintaanmu */
+    }
 }
 
-/* ==========================================
-   5. MODAL SYSTEM (DESKTOP: SPLIT LAYOUT)
-   ========================================== */
+/* iPad Portrait (2 Kolom + Celah Samping) */
+@media (max-width: 899px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+        width: 85%; /* Celah samping lebih terlihat */
+    }
+}
+
+/* Mobile (1 Kolom Full) */
+@media (max-width: 480px) {
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+}
+
+/* --- 5. MODAL / POP-UP (Full Screen) --- */
 .modal {
     display: none;
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.95);
-    z-index: 9999;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 2000;
     justify-content: center;
     align-items: center;
+    padding: 20px;
 }
 
 .modal-content {
-    display: flex;
-    flex-direction: row; /* Kiri media, Kanan teks di Desktop */
-    width: 90%;
-    max-width: 1000px;
-    background: #111;
-    border: 1px solid #2a2a2a;
-    overflow: hidden;
-    margin: auto; 
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.1);
 }
 
-#modalMedia {
-    flex: 2; /* Bagian video lebih lebar */
-    background: #000;
-}
-
-#modalMedia video, #modalMedia img, #modalMedia iframe {
-    width: 100%;
-    aspect-ratio: 16/9;
-    display: block;
-    object-fit: contain;
-}
-
-.modal-text {
-    flex: 1; /* Bagian teks lebih sempit */
-    padding: 40px 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.modal-text h2 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-}
-
-.modal-text p {
-    font-size: 14px;
-    color: #bbb;
-}
-
-.close-btn {
+.close-modal {
     position: absolute;
-    top: 20px; right: 25px;
-    font-size: 35px;
+    top: 20px;
+    right: 30px;
+    font-size: 30px;
     color: white;
     cursor: pointer;
 }
 
-/* ==========================================
-   6. RESPONSIVE MOBILE (1 KOLOM PENUH)
-   ========================================== */
-@media (max-width: 768px) {
-    /* Header di HP */
-    .nav-links {
-        gap: 15px;
-    }
+/* --- 6. FOOTER --- */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    background: #000;
+    border-top: 1px solid #222;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.social-links a {
+    color: #fff;
+    font-size: 1.2rem;
+    margin: 0 10px;
+    text-decoration: none;
+}
