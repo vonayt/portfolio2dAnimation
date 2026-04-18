@@ -1,4 +1,4 @@
-/* --- 1. RESET & FONT --- */
+/* --- RESET & FONTS --- */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@300;400&display=swap');
 
 * {
@@ -13,14 +13,14 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-/* --- 2. HEADER (Sangat Tipis & Presisi) --- */
+/* --- HEADER (DIPERBAIKI: Logo Kiri, Menu Kanan) --- */
 header {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Memaksa logo ke kiri dan nav ke kanan */
     align-items: center;
-    padding: 15px 4%; /* Sangat tipis sesuai contoh */
+    padding: 15px 5%; /* Tipis sesuai contoh */
     background: #000;
-    position: relative;
+    width: 100%;
 }
 
 .logo {
@@ -28,20 +28,21 @@ header {
     font-weight: 600;
 }
 
-nav {
+.nav-links {
     display: flex;
-    gap: 20px; /* Jarak rapat antar menu di sebelah kanan */
+    list-style: none;
+    gap: 20px; /* Jarak rapat antar menu di sisi kanan */
 }
 
-nav a {
+.nav-links a {
     color: #fff;
     text-decoration: none;
     font-family: 'Roboto', sans-serif;
     font-size: 0.9rem;
-    text-transform: lowercase; /* animasi & about me huruf kecil */
+    text-transform: lowercase; /* Huruf kecil sesuai permintaan */
 }
 
-/* --- 3. GRID (Full Desktop, Margin di iPad) --- */
+/* --- GRID (Full Desktop, Margin di iPad) --- */
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -63,7 +64,7 @@ nav a {
     display: block;
 }
 
-/* --- 4. HOVER EFFECT (Overlay Judul) --- */
+/* --- HOVER EFFECT --- */
 .overlay {
     position: absolute;
     inset: 0;
@@ -79,12 +80,12 @@ nav a {
     opacity: 1;
 }
 
-.overlay-text {
+.overlay h3 {
     font-size: 0.9rem;
     text-transform: lowercase;
 }
 
-/* --- 5. RESPONSIVE IPAD (Margin Samping) --- */
+/* --- IPAD AUTO LAYOUT (Celah Samping) --- */
 @media (max-width: 1024px) {
     .portfolio-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -101,7 +102,7 @@ nav a {
     }
 }
 
-/* --- 6. SPLIT MODAL (Teks Tidak Rapat ke Video) --- */
+/* --- MODAL SPLIT LAYOUT (DIPERBAIKI: Teks Tidak Rapat) --- */
 .modal {
     display: none;
     position: fixed;
@@ -110,89 +111,69 @@ nav a {
     z-index: 9999;
     justify-content: center;
     align-items: center;
-    padding: 40px;
+    padding: 20px;
 }
 
 .modal-content {
-    background: #000; /* Background hitam pekat */
     display: flex;
+    background: #000;
     width: 100%;
     max-width: 1100px;
-    max-height: 80vh;
-    overflow: hidden;
     position: relative;
 }
 
-.modal-left {
-    flex: 1.6; /* Area Video */
-    display: flex;
-    align-items: center;
-    background: #000;
+#modalMedia {
+    flex: 1.6;
 }
 
-.modal-left video {
+#modalMedia video {
     width: 100%;
     max-height: 80vh;
     object-fit: contain;
 }
 
-.modal-right {
+.modal-text {
     flex: 1;
-    padding: 0 0 0 50px; /* MEMBERIKAN JARAK LUAS DARI VIDEO */
+    padding: 0 0 0 50px; /* Jarak lega agar tidak menempel ke video */
     display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align: left;
 }
 
-.modal-right h2 {
-    font-size: 1.6rem;
-    margin-bottom: 20px;
+.modal-text h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
     text-transform: lowercase;
-    font-weight: 600;
 }
 
-.modal-right p {
-    font-family: 'Roboto', sans-serif;
-    font-size: 0.95rem;
-    color: #bbb;
-    line-height: 1.6;
+.modal-text p {
+    font-size: 0.9rem;
+    color: #aaa;
+    line-height: 1.5;
 }
 
-.close-modal {
+.close-btn {
     position: absolute;
     top: -10px;
     right: 0;
     font-size: 35px;
     color: #fff;
     cursor: pointer;
-    z-index: 100;
 }
 
-/* Fix Mobile Modal */
-@media (max-width: 768px) {
-    .modal-content {
-        flex-direction: column;
-    }
-    .modal-right {
-        padding: 30px 0 0 0; /* Jarak atas saat mode tumpuk di HP */
-    }
-}
-
-/* --- 7. FOOTER --- */
-footer {
-    padding: 50px 20px;
+/* --- FOOTER (Teks Rata Tengah) --- */
+.footer-social {
+    padding: 60px 20px;
     text-align: center;
 }
 
-.footer-socials {
+.social-links-text {
     display: flex;
     justify-content: center;
-    gap: 25px;
-    margin-bottom: 15px;
+    gap: 15px;
 }
 
-.footer-socials a {
+.social-links-text a {
     color: #fff;
     text-decoration: none;
     font-size: 0.85rem;
