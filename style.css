@@ -43,46 +43,57 @@ header {
 }
 
 /* --- GRID (Full Desktop, Margin di iPad) --- */
+/* --- GRID UTAMA (Desktop: Gambar 1) --- */
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr); /* 4 Kolom di Desktop */
     gap: 0;
     width: 100%;
 }
 
 .portfolio-item {
     position: relative;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 16 / 9; /* Menyesuaikan rasio video/animasi agar seragam */
     overflow: hidden;
     cursor: pointer;
 }
 
-.portfolio-item video, .portfolio-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-/* --- HOVER EFFECT --- */
-.overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.portfolio-item:hover .overlay {
-    opacity: 1;
-}
-
+/* --- PERBAIKAN HOVER TEXT (Gambar 4) --- */
 .overlay h3 {
-    font-size: 0.9rem;
-    text-transform: lowercase;
+    font-size: 1.2rem; /* Ukuran diperbesar agar tidak kekecilan */
+    text-transform: capitalize; /* Otomatis Huruf Besar di Awal Kata */
+    font-weight: 600;
+    padding: 0 15px;
+    text-align: center;
+}
+
+/* --- RESPONSIVE BREAKPOINTS --- */
+
+/* Tablet Landscape (Gambar 2) */
+@media (max-width: 1200px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 Kolom */
+    }
+}
+
+/* Tablet Portrait (Gambar 3) */
+@media (max-width: 900px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 Kolom */
+        width: 100%; /* Menghapus margin samping agar penuh seperti gambar */
+    }
+}
+
+/* Mobile (1 Kolom Menggulir ke Bawah) */
+@media (max-width: 600px) {
+    .portfolio-grid {
+        grid-template-columns: 1fr; /* 1 Kolom Saja */
+    }
+    
+    .overlay h3 {
+        font-size: 1.1rem; /* Sedikit penyesuaian di layar kecil */
+    }
+}
 }
 
 /* --- IPAD AUTO LAYOUT (Celah Samping) --- */
