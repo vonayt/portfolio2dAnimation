@@ -78,7 +78,7 @@ header {
 @media (max-width: 1440px) {
     .portfolio-grid {
         grid-template-columns: repeat(3, 1fr);
-        width: 80%; /* Tetap full width tanpa celah */
+        width: auto;
         margin-left: auto;
         margin-right: auto;
         (min-width: 1250px)
@@ -89,7 +89,7 @@ header {
 @media (max-width: 1250px) {
     .portfolio-grid {
         grid-template-columns: repeat(2, 1fr);
-        width: 80%;
+        width: auto;
         margin-left: auto;
         margin-right: auto;
     }
@@ -131,14 +131,14 @@ header {
 /* --- RESPONSIF TABLET (DIPERLEBAR BREAKPOINT-NYA) --- */
 
 /* Tablet Landscape: Paksa 3 kolom lebih awal */
-@media (max-width: 1300px) { 
+@media (max-width: 1440px) { 
     .portfolio-grid {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
 /* Tablet Portrait: Paksa 2 kolom lebih awal */
-@media (max-width: 950px) {
+@media (max-width: 1150px) {
     .portfolio-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -155,14 +155,14 @@ header {
 /* --- RESPONSIVE BREAKPOINTS --- */
 
 /* Tablet Landscape (3 Kolom) */
-@media (max-width: 1200px) {
+@media (max-width: 1440px) {
     .portfolio-grid {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
 /* Tablet Portrait (2 Kolom - Gambar 3) */
-@media (max-width: 900px) {
+@media (max-width: 1150px) {
     .portfolio-grid {
         grid-template-columns: repeat(2, 1fr);
     }
