@@ -46,11 +46,14 @@ header {
 
 /* --- PERBAIKAN GRID & HOVER --- */
 
+/* --- CONTAINER UTAMA (Kunci Fleksibilitas) --- */
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Desktop tetap 4 */
+    grid-template-columns: repeat(4, 1fr); /* Desktop: 4 kolom */
     gap: 0;
     width: 100%;
+    max-width: 1400px; /* Batas maksimal agar tidak terlalu lebar di monitor gede */
+    margin: 0 auto;    /* Membuat grid selalu di tengah */
 }
 
 .portfolio-item {
@@ -69,20 +72,43 @@ header {
     display: block;
 }
 
-/* --- MUNCULKAN KEMBALI HOVER (Overlay harus di atas video) --- */
+/* --- RESPONSIF TABLET (MENGGANTI JUMLAH KOLOM & MENJAGA JARAK) --- */
+
+/* TABLET LANDSCAPE (Gambar Kiri) */
+@media (max-width: 1200px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 Kolom */
+        width: 90%; /* Memberikan ruang kosong di kiri-kanan seperti referensi */
+    }
+}
+
+/* TABLET PORTRAIT (Gambar Kanan) */
+@media (max-width: 900px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 Kolom */
+        width: 85%; /* Ruang kosong kiri-kanan lebih lebar lagi */
+    }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .portfolio-grid {
+        grid-template-columns: 1fr; /* 1 Kolom menggulir */
+        width: 95%; /* Tetap ada sedikit jarak di pinggir layar HP */
+    }
+}
+
+/* --- OVERLAY HOVER --- */
 .overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     background: rgba(0, 0, 0, 0.7);
     display: flex;
     justify-content: center;
     align-items: center;
     opacity: 0;
     transition: opacity 0.3s ease;
-    z-index: 10; /* Kunci agar teks muncul di depan video */
+    z-index: 10;
 }
 
 .portfolio-item:hover .overlay {
@@ -91,10 +117,8 @@ header {
 
 .overlay h3 {
     font-size: 1.3rem;
-    color: white;
-    text-transform: none; /* Sesuai ketikan di HTML */
+    text-transform: none;
     font-weight: 600;
-    text-align: center;
 }
 
 /* --- RESPONSIF TABLET (DIPERLEBAR BREAKPOINT-NYA) --- */
