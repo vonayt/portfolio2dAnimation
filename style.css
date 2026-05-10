@@ -44,20 +44,19 @@ header {
     text-transform: lowercase;
 }
 
-/* --- GRID SISTEM (Inti Perbaikan) --- */
-/* --- HANYA BAGIAN GRID DAN THUMBNAIL --- */
-
+/* --- GRID UTAMA --- */
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Desktop: 4 kolom */
+    grid-template-columns: repeat(4, 1fr); /* Desktop 4 Kolom */
     gap: 0;
     width: 100%;
 }
 
 .portfolio-item {
     position: relative;
-    aspect-ratio: 4 / 3; /* Bingkai thumbnail tetap 4:3 */
-    background-color: #000;
+    /* Ini membuat bingkai kotak thumbnail tetap 4:3 */
+    aspect-ratio: 4 / 3; 
+    background-color: #000; /* Memberi warna hitam jika video aslinya lebih lebar */
     overflow: hidden;
     cursor: pointer;
 }
@@ -66,11 +65,13 @@ header {
 .portfolio-item img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Video utuh di dalam bingkai, TIDAK ZOOM */
+    /* KUNCI: COVER agar video memenuhi kotak tanpa penyet/gepeng */
+    /* Jika ingin video tidak terpotong sama sekali gunakan 'contain' */
+    object-fit: cover; 
     display: block;
 }
 
-/* --- RESPONSIVE UNTUK SEMUA DEVICE --- */
+/* --- RESPONSIVE (4, 3, 2, 1 KOLOM) --- */
 
 /* Tablet Landscape */
 @media (max-width: 1200px) {
@@ -86,18 +87,19 @@ header {
     }
 }
 
-/* Mobile (1 Kolom menggulir) */
+/* Mobile */
 @media (max-width: 600px) {
     .portfolio-grid {
         grid-template-columns: 1fr;
     }
 }
 
-/* --- PERBAIKAN TEKS HOVER (Sesuai Gambar 4) --- */
+/* --- OVERLAY TEKS (Sesuai keinginan: Tidak Kecil & Bebas) --- */
 .overlay h3 {
-    font-size: 1.3rem; /* Ukuran tidak kekecilan */
-    text-transform: none; /* Sesuai ketikan di HTML, bukan lowercase paksa */
+    font-size: 1.3rem; 
+    text-transform: none; /* Mengikuti ketikan asli di HTML */
     font-weight: 600;
+}
 }
 
 /* --- RESPONSIVE BREAKPOINTS --- */
