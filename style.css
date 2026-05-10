@@ -1,46 +1,104 @@
-/* --- RESET & FONTS --- */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@300;400&display=swap');
 
+
+
 * {
+
     margin: 0;
+
     padding: 0;
+
     box-sizing: border-box;
+
 }
+
+
 
 body {
+
     background-color: #000;
+
     color: #fff;
+
     font-family: 'Poppins', sans-serif;
+
 }
+
+
 
 /* --- HEADER (DIPERBAIKI: Logo Kiri, Menu Kanan) --- */
+
 header {
+
     display: flex;
+
     justify-content: space-between; /* Memaksa logo ke kiri dan nav ke kanan */
+
     align-items: center;
+
     padding: 15px 5%; /* Tipis sesuai contoh */
+
     background: #000;
+
     width: 100%;
+
 }
+
+
 
 .logo {
+
     font-size: 1.2rem;
+
     font-weight: 600;
+
 }
+
+
 
 .nav-links {
+
     display: flex;
+
     list-style: none;
+
     gap: 20px; /* Jarak rapat antar menu di sisi kanan */
+
 }
 
+
+
 .nav-links a {
+
     color: #fff;
+
     text-decoration: none;
+
     font-family: 'Roboto', sans-serif;
+
     font-size: 0.9rem;
+
     text-transform: lowercase; /* Huruf kecil sesuai permintaan */
+
 }
+
+
+
+/* --- GRID (Full Desktop, Margin di iPad) --- */
+
+.portfolio-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 0;
+
+    width: 100%;
+
+}
+
+
 
 .portfolio-item {
 
@@ -107,101 +165,195 @@ header {
     font-size: 0.9rem;
 
     text-transform: lowercase;
-    
+
 }
-}
+
+
 
 /* --- IPAD AUTO LAYOUT (Celah Samping) --- */
+
 @media (max-width: 1024px) {
+
     .portfolio-grid {
+
         grid-template-columns: repeat(3, 1fr);
+
         width: 90%;
+
         margin: 0 auto;
+
     }
+
 }
+
+
 
 @media (max-width: 768px) {
+
     .portfolio-grid {
+
         grid-template-columns: repeat(2, 1fr);
+
         width: 85%;
+
         margin: 0 auto;
+
     }
+
 }
+
+
 
 /* --- MODAL SPLIT LAYOUT (DIPERBAIKI: Teks Tidak Rapat) --- */
+
 .modal {
+
     display: none;
+
     position: fixed;
+
     inset: 0;
+
     background: rgba(0, 0, 0, 0.95);
+
     z-index: 9999;
+
     justify-content: center;
+
     align-items: center;
+
     padding: 20px;
+
 }
+
+
 
 .modal-content {
+
     display: flex;
+
     background: #000;
+
     width: 100%;
+
     max-width: 1100px;
+
     position: relative;
+
 }
+
+
 
 #modalMedia {
+
     flex: 1.6;
+
 }
+
+
 
 #modalMedia video {
+
     width: 100%;
+
     max-height: 80vh;
+
     object-fit: contain;
+
 }
+
+
 
 .modal-text {
+
     flex: 1;
+
     padding: 0 0 0 50px; /* Jarak lega agar tidak menempel ke video */
+
     display: flex;
+
     flex-direction: column;
+
     justify-content: center;
+
 }
+
+
 
 .modal-text h2 {
+
     font-size: 1.5rem;
+
     margin-bottom: 15px;
+
     text-transform: lowercase;
+
 }
+
+
 
 .modal-text p {
+
     font-size: 0.9rem;
+
     color: #aaa;
+
     line-height: 1.5;
+
 }
+
+
 
 .close-btn {
+
     position: absolute;
+
     top: -10px;
+
     right: 0;
+
     font-size: 35px;
+
     color: #fff;
+
     cursor: pointer;
+
 }
+
+
 
 /* --- FOOTER (Teks Rata Tengah) --- */
+
 .footer-social {
+
     padding: 60px 20px;
+
     text-align: center;
+
 }
+
+
 
 .social-links-text {
+
     display: flex;
+
     justify-content: center;
+
     gap: 15px;
+
 }
 
+
+
 .social-links-text a {
+
     color: #fff;
+
     text-decoration: none;
+
     font-size: 0.85rem;
+
     text-transform: lowercase;
+
 }
