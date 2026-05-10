@@ -45,53 +45,59 @@ header {
 }
 
 /* --- GRID SISTEM (Inti Perbaikan) --- */
+/* --- HANYA BAGIAN GRID DAN THUMBNAIL --- */
+
 .portfolio-grid {
     display: grid;
-    /* Default Desktop: 4 Kolom */
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0; /* Merapatkan grid seperti gambar referensi */
+    grid-template-columns: repeat(4, 1fr); /* Desktop: 4 kolom */
+    gap: 0;
     width: 100%;
 }
 
 .portfolio-item {
     position: relative;
-    background-color: #000; 
+    aspect-ratio: 4 / 3; /* Bingkai thumbnail tetap 4:3 */
+    background-color: #000;
     overflow: hidden;
     cursor: pointer;
-    line-height: 0; /* Menghilangkan gap halus di bawah video */
 }
 
 .portfolio-item video, 
 .portfolio-item img {
     width: 100%;
     height: 100%;
-    /* KUNCI: contain agar video utuh & tidak terpotong/zoom */
-    object-fit: contain; 
+    object-fit: contain; /* Video utuh di dalam bingkai, TIDAK ZOOM */
     display: block;
 }
 
-/* --- HOVER EFFECT (Teks Lebih Besar & Bebas) --- */
-.overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+/* --- RESPONSIVE UNTUK SEMUA DEVICE --- */
+
+/* Tablet Landscape */
+@media (max-width: 1200px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
-.portfolio-item:hover .overlay {
-    opacity: 1;
+/* Tablet Portrait */
+@media (max-width: 900px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
+/* Mobile (1 Kolom menggulir) */
+@media (max-width: 600px) {
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- PERBAIKAN TEKS HOVER (Sesuai Gambar 4) --- */
 .overlay h3 {
-    font-size: 1.2rem; /* Ukuran diperbesar sesuai permintaan */
-    text-transform: none; /* Mengikuti apa yang kamu ketik di HTML */
+    font-size: 1.3rem; /* Ukuran tidak kekecilan */
+    text-transform: none; /* Sesuai ketikan di HTML, bukan lowercase paksa */
     font-weight: 600;
-    text-align: center;
-    padding: 0 15px;
 }
 
 /* --- RESPONSIVE BREAKPOINTS --- */
