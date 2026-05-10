@@ -49,11 +49,11 @@ header {
 /* --- CONTAINER UTAMA (Kunci Fleksibilitas) --- */
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Desktop: 4 kolom */
+    /* Default untuk 1440px ke atas: 4 Kolom */
+    grid-template-columns: repeat(4, 1fr); 
     gap: 0;
-    width: 100%;
-    max-width: 1400px; /* Batas maksimal agar tidak terlalu lebar di monitor gede */
-    margin: 0 auto;    /* Membuat grid selalu di tengah */
+    width: 100%; /* Memaksa grid selebar layar */
+    margin: 0;   /* Menghapus margin agar tidak ada celah samping */
 }
 
 .portfolio-item {
@@ -75,26 +75,26 @@ header {
 /* --- RESPONSIF TABLET (MENGGANTI JUMLAH KOLOM & MENJAGA JARAK) --- */
 
 /* TABLET LANDSCAPE (Gambar Kiri) */
-@media (max-width: 1200px) {
+@media (max-width: 1440px) {
     .portfolio-grid {
-        grid-template-columns: repeat(3, 1fr); /* 3 Kolom */
-        width: 90%; /* Memberikan ruang kosong di kiri-kanan seperti referensi */
+        grid-template-columns: repeat(3, 1fr);
+        width: 100%; /* Tetap full width tanpa celah */
     }
 }
 
-/* TABLET PORTRAIT (Gambar Kanan) */
-@media (max-width: 900px) {
+/* 2. Ukuran 1135px kebawah sampai batas Mobile (misal 600px): 2 Kolom */
+@media (max-width: 1135px) {
     .portfolio-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 Kolom */
-        width: 85%; /* Ruang kosong kiri-kanan lebih lebar lagi */
+        grid-template-columns: repeat(2, 1fr);
+        width: 100%;
     }
 }
 
-/* MOBILE */
+/* 3. Ukuran Mobile (600px kebawah): 1 Kolom */
 @media (max-width: 600px) {
     .portfolio-grid {
-        grid-template-columns: 1fr; /* 1 Kolom menggulir */
-        width: 95%; /* Tetap ada sedikit jarak di pinggir layar HP */
+        grid-template-columns: 1fr;
+        width: 100%;
     }
 }
 
