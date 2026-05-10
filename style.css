@@ -78,15 +78,15 @@ header {
 @media (max-width: 1440px) {
     .portfolio-grid {
         grid-template-columns: repeat(3, 1fr);
-        width: 100%; /* Tetap full width tanpa celah */
+        width: auto; /* Tetap full width tanpa celah */
     }
 }
 
 /* 2. Ukuran 1135px kebawah sampai batas Mobile (misal 600px): 2 Kolom */
-@media (max-width: 1135px) {
+@media (max-width: 1200px) {
     .portfolio-grid {
         grid-template-columns: repeat(2, 1fr);
-        width: 100%;
+        width: auto;
     }
 }
 
