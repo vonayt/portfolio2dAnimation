@@ -407,34 +407,29 @@ header {
    =================================================== */
 
 /* Sesuai request: Tablet tetap ikut Desktop, aturan ini HANYA aktif di HP (600px kebawah) */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .about-grid-container {
-        flex-direction: column; /* Mengubah susunan menjadi tumpuk ke bawah di HP */
-        padding: 40px 6%;
-        gap: 12px;
-        justify-content: flex-start;
+        display: flex !important;
+        flex-direction: column !important; 
+        min-height: auto !important;       
+        padding: 30px 6% !important; /* Ini menjaga jarak aman kiri dan kanan */
+        gap: 20px !important;              
+        justify-content: flex-start !important;
+        width: 100% !important;
+        box-sizing: border-box !important; /* Memaksa padding dihitung di dalam lebar 100% */
+        overflow: hidden !important;       /* Memotong elemen yang mencoba jebol ke kanan */
     }
 
-    .about-left-content {
-        max-width: 100%; /* Teks memenuhi lebar layar HP */
-        text-align: left;
-    }
-
-    .about-left-content h1 {
-        font-size: 2.5rem;
-        margin-bottom: 15px;
-    }
-
-    .about-left-content p {
-        font-size: 1rem;
-        margin-bottom: 20px;
-    }
-
+    /* Pastikan gambar dipaksa pas dengan lebar layar HP */
     .about-right-image {
-        width: 100%;
+        width: 100% !important;
+        box-sizing: border-box !important;
     }
 
     .about-right-image img {
-        max-width: 100%; /* Gambar otomatis mengecil proporsional di HP */
+        width: 100% !important; /* Memaksa gambar mengikuti lebar kolom */
+        max-width: 100% !important;       
+        height: auto !important;
+        display: block !important;
     }
 }
