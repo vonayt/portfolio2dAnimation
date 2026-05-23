@@ -323,13 +323,22 @@ header {
    --- FIX TOTAL LAYOUT 2 KOLOM (TEKS KIRI - GAMBAR KANAN) ---
    =================================================== */
 
-/* Container Utama: Mengisi satu layar penuh setelah di-scroll kebawah */
+/* ===================================================
+   --- LAYOUT 2 KOLOM BERPISAH (SCROLL SYSTEM) ---
+   =================================================== */
+
+/* Mengaktifkan scroll halus saat menu di atas diklik */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Container utama About Me: dipaksa mulai di halaman baru bawah video */
 .about-grid-container {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    min-height: 100vh; 
+    min-height: 100vh; /* Kunci agar dia mengambil 1 layar penuh sendiri di bawah */
     width: 100%;
     background-color: #000000;
     padding: 60px 8%;
@@ -337,7 +346,7 @@ header {
     box-sizing: border-box;
 }
 
-/* Kolom Teks (Kiri) */
+/* Kolom Teks Kiri */
 .about-left-content {
     flex: 1;
     max-width: 500px;
@@ -357,7 +366,6 @@ header {
     margin-bottom: 30px;
 }
 
-/* Bagian Email & Kontak */
 .about-contact-box {
     display: flex;
     flex-direction: column;
@@ -376,7 +384,7 @@ header {
     font-weight: 600;
 }
 
-/* Kolom Gambar (Kanan) */
+/* Kolom Gambar Kanan */
 .about-right-image {
     flex: 1.2;
     display: flex;
@@ -391,15 +399,13 @@ header {
     object-fit: contain;
 }
 
-/* ===================================================
-   --- AUTO LAYOUT HP: OTOMATIS RUN TUT KE BAWAH ---
-   =================================================== */
+/* --- AUTO LAYOUT RESPONSIF HP --- */
 @media (max-width: 768px) {
     .about-grid-container {
-        flex-direction: column; /* Melepas kolom horizontal, otomatis tumpuk vertikal */
-        min-height: auto;       /* Mencegah layar melar kosong di tengah */
+        flex-direction: column; /* Otomatis runtut ke bawah di HP */
+        min-height: auto;       /* Jarak pas dan tidak melar */
         padding: 40px 6%;
-        gap: 25px;              /* Menjaga jarak teks dan gambar agar tidak kejauhan */
+        gap: 25px;              
     }
 
     .about-left-content {
@@ -415,6 +421,6 @@ header {
     }
 
     .about-right-image img {
-        max-width: 100%;        /* Gambar otomatis mengecil pas dengan lebar HP */
+        max-width: 100%;
     }
 }
