@@ -327,109 +327,86 @@ header {
    --- LAYOUT 2 KOLOM MINIMALIS (TEKS & GAMBAR) ---
    =================================================== */
 
-/* Container Utama: Membagi layar jadi 2 kolom (Flexbox) */
-.about-grid-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center; /* Membuat teks di kiri sejajar vertikal dengan tengah gambar */
-    justify-content: space-between;
-    min-height: calc(100vh - 70px); /* Menghitung sisa tinggi layar setelah dipotong header */
-    width: 100%;
-    background-color: #000000;
-    padding: 40px 8%; /* Whitespace di kanan kiri halaman */
-    gap: 50px; /* Jarak aman antara kolom teks dan gambar */
-}
+/* ===================================================
+   --- KODE BARU ABOUT ME: GANTI BAGIAN SEBELUMNYA DENGAN INI ---
+   =================================================== */
 
-/* --- KOLOM KIRI (TEKS) --- */
-.about-left-content {
-    flex: 1;
-    max-width: 500px; /* Membatasi lebar teks agar rapi dan tidak molor */
-}
-
-.about-left-content h1 {
-    font-size: 3.5rem;
-    font-weight: 600;
-    margin-bottom: 25px;
-    letter-spacing: -0.5px;
-}
-
-.about-left-content p {
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #ffffff;
-    margin-bottom: 30px;
-}
-
-/* Box Kontak */
-.about-contact-box {
+.about-hero-container {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    justify-content: space-between; 
+    min-height: 100vh; /* Kunci agar pas di-scroll langsung penuh 1 layar monitor */
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+    
+    /* Efek gradasi transparan memudar halus ke gambar kota kamu */
+    background: linear-gradient(to bottom, 
+                #000000 0%, 
+                #000000 30%, 
+                rgba(0, 0, 0, 0.4) 60%, 
+                rgba(0, 0, 0, 0) 100%), 
+                url('KOTA_UNGU.jpg') no-repeat center bottom; /* GANTI KOTA_UNGU.jpg dengan file gambar kamu */
+    
+    background-size: cover;
+    padding: 80px 10% 40px 10%;
 }
 
-.about-contact-box .contact-label {
-    font-family: 'Roboto', sans-serif;
-    font-size: 1rem;
-    color: #ffffff;
+.about-hero-text {
+    max-width: 650px;
+    margin-top: 20px;
 }
 
-.about-contact-box .email-text-link {
-    color: #ffffff;
-    text-decoration: none; /* Menghapus garis bawah bawaan agar bersih */
-    font-size: 1rem;
+.about-hero-text h1 {
+    font-size: 4rem; 
     font-weight: 600;
-    transition: color 0.2s ease;
+    margin-bottom: 25px;
+    color: #ffffff;
 }
 
-.about-contact-box .email-text-link:hover {
-    color: #aaaaaa; /* Berubah abu-abu lembut saat kursor di atasnya */
+.about-hero-text p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #ffffff;
+    margin-bottom: 35px;
 }
 
-/* --- KOLOM KANAN (GAMBAR) --- */
-.about-right-image {
-    flex: 1.2; /* Kolom gambar dibuat sedikit lebih lebar dari kolom teks */
+.about-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.about-contact .email-link {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.about-hero-social {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.about-right-image img {
+    gap: 12px;
     width: 100%;
-    max-width: 650px; /* Batas maksimal lebar gambar di desktop */
-    height: auto;
-    object-fit: contain; /* Memastikan gambar Anda utuh tidak terpotong */
-    border: none;
+    padding-top: 40px;
 }
 
-/* ===================================================
-   --- AUTO LAYOUT RESPONSIVE UNTUK MOBILE & TABLET ---
-   =================================================== */
+.about-hero-social a {
+    color: #ffffff;
+}
 
-/* Sesuai request: Tablet tetap ikut Desktop, aturan ini HANYA aktif di HP (600px kebawah) */
+/* --- AUTO LAYOUT HP (OTOMATIS MERAPAT DAN RESPONSIVE) --- */
 @media (max-width: 768px) {
-    .about-grid-container {
-        display: flex !important;
-        flex-direction: column !important; 
-        min-height: auto !important;       
-        padding: 30px 6% !important; /* Ini menjaga jarak aman kiri dan kanan */
-        gap: 20px !important;              
-        justify-content: flex-start !important;
-        width: 100% !important;
-        box-sizing: border-box !important; /* Memaksa padding dihitung di dalam lebar 100% */
-        overflow: hidden !important;       /* Memotong elemen yang mencoba jebol ke kanan */
+    .about-hero-container {
+        padding: 40px 6% 30px 6%;
+        background-position: center bottom;
     }
 
-    /* Pastikan gambar dipaksa pas dengan lebar layar HP */
-    .about-right-image {
-        width: 100% !important;
-        box-sizing: border-box !important;
+    .about-hero-text h1 {
+        font-size: 2.8rem;
     }
-
-    .about-right-image img {
-        width: 100% !important; /* Memaksa gambar mengikuti lebar kolom */
-        max-width: 100% !important;       
-        height: auto !important;
-        display: block !important;
+    
+    .about-hero-text p {
+        font-size: 1.05rem;
     }
 }
