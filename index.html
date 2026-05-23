@@ -13,12 +13,12 @@
     <nav>
         <div class="logo">VonAyt</div>
         <ul class="nav-links">
-            <li><a href="#page-animation">Animation</a></li>
-            <li><a href="#page-about">About Me</a></li>
+            <li><a href="#" onclick="bukaHalaman('animation')">Animation</a></li>
+            <li><a href="#" onclick="bukaHalaman('about')">About Me</a></li>
         </ul>
     </nav>
 </header>
-
+    
  <main id="page-animation" class="portfolio-grid">
         <div class="portfolio-item" onclick="openModal('dumpanimasi.mp4/YUTA VS YUJI part 1.mp4', 'Personal work Fan Animation', 'Directing, Storyboard, 2D Animation, Compositing, Background Paint')">
            <video autoplay loop muted playsinline class="video-preview" ontimeupdate="if(this.currentTime >= 4) this.currentTime = 0;">
@@ -157,6 +157,21 @@
 
     <script src="script.js"></script>
     <script>
+        <script>
+    function bukaHalaman(namaHalaman) {
+        const pageAnim = document.getElementById('page-animation');
+        const pageAbout = document.querySelector('.about-grid-container');
+
+        if (namaHalaman === 'animation') {
+            pageAnim.style.display = 'grid';       /* Munculkan galeri video */
+            pageAbout.style.display = 'none';     /* Sembunyikan About Me total */
+        } else if (namaHalaman === 'about') {
+            pageAnim.style.display = 'none';      /* Sembunyikan galeri video total */
+            pageAbout.style.display = 'flex';     /* Munculkan About Me */
+        }
+    }
+    window.onload = function() {
+        bukaHalaman('animation');
        
         const btnAnim = document.querySelector('header nav ul li:nth-child(1) a');
         const btnAbout = document.getElementById('nav-about');
