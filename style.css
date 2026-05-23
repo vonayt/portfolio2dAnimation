@@ -324,21 +324,33 @@ header {
    =================================================== */
 
 /* ===================================================
-   --- LAYOUT 2 KOLOM BERPISAH (SCROLL SYSTEM) ---
+   --- SAKELAR OTOMATIS: PAS PISAH HALAMAN (CLEAN) ---
    =================================================== */
 
-/* Mengaktifkan scroll halus saat menu di atas diklik */
-html {
-    scroll-behavior: smooth;
+/* Sembunyikan halaman About Me saat pertama kali web dibuka */
+.about-grid-container {
+    display: none !important;
 }
 
-/* Container utama About Me: dipaksa mulai di halaman baru bawah video */
+/* 1. KETIKA TOMBOL ABOUT ME DIKLIK (#page-about aktif) */
+#page-about:target {
+    display: flex !important; /* Munculkan halaman About Me */
+}
+
+/* KUNCI: Sembunyikan total Grid Video pas About Me lagi aktif */
+#page-about:target ~ #page-animation {
+    display: none !important;
+}
+
+
+/* ===================================================
+   --- GAYA LAYOUT ABOUT ME (TEKS KIRI - GAMBAR KANAN) ---
+   =================================================== */
 .about-grid-container {
-    display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    min-height: 100vh; /* Kunci agar dia mengambil 1 layar penuh sendiri di bawah */
+    min-height: calc(100vh - 80px);
     width: 100%;
     background-color: #000000;
     padding: 60px 8%;
@@ -346,7 +358,6 @@ html {
     box-sizing: border-box;
 }
 
-/* Kolom Teks Kiri */
 .about-left-content {
     flex: 1;
     max-width: 500px;
@@ -363,64 +374,40 @@ html {
     font-size: 1.1rem;
     line-height: 1.6;
     color: #ffffff;
-    margin-bottom: 30px;
 }
 
 .about-contact-box {
     display: flex;
     flex-direction: column;
     gap: 8px;
-}
-
-.about-contact-box .contact-label {
-    font-size: 1rem;
-    color: #ffffff;
+    margin-top: 25px;
 }
 
 .about-contact-box .email-text-link {
     color: #ffffff;
     text-decoration: underline;
-    font-size: 1rem;
-    font-weight: 600;
 }
 
-/* Kolom Gambar Kanan */
 .about-right-image {
     flex: 1.2;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 .about-right-image img {
     width: 100%;
     max-width: 650px;
     height: auto;
-    object-fit: contain;
 }
 
-/* --- AUTO LAYOUT RESPONSIF HP --- */
+/* --- RESPONSIF OTOMATIS DI HP --- */
 @media (max-width: 768px) {
     .about-grid-container {
-        flex-direction: column; /* Otomatis runtut ke bawah di HP */
-        min-height: auto;       /* Jarak pas dan tidak melar */
+        flex-direction: column;
+        min-height: auto;
         padding: 40px 6%;
-        gap: 25px;              
+        gap: 25px;
     }
-
-    .about-left-content {
-        max-width: 100%;
-    }
-
-    .about-left-content h1 {
-        font-size: 2.5rem;
-    }
-
-    .about-right-image {
-        width: 100%;
-    }
-
-    .about-right-image img {
-        max-width: 100%;
-    }
+    .about-left-content h1 { font-size: 2.5rem; }
+    .about-right-image img { max-width: 100%; }
 }
