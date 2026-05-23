@@ -320,93 +320,101 @@ header {
     
 }
 /* ===================================================
-   --- LAYOUT HALAMAN ABOUT ME
+   --- FIX TOTAL LAYOUT 2 KOLOM (TEKS KIRI - GAMBAR KANAN) ---
    =================================================== */
 
-/* ===================================================
-   --- LAYOUT 2 KOLOM MINIMALIS (TEKS & GAMBAR) ---
-   =================================================== */
-
-/* ===================================================
-   --- KODE BARU ABOUT ME: GANTI BAGIAN SEBELUMNYA DENGAN INI ---
-   =================================================== */
-
-.about-hero-container {
+/* Container Utama: Mengisi satu layar penuh setelah di-scroll kebawah */
+.about-grid-container {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between; 
-    min-height: 100vh; /* Kunci agar pas di-scroll langsung penuh 1 layar monitor */
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 100vh; 
     width: 100%;
-    position: relative;
+    background-color: #000000;
+    padding: 60px 8%;
+    gap: 50px;
     box-sizing: border-box;
-    
-    /* Efek gradasi transparan memudar halus ke gambar kota kamu */
-    background: linear-gradient(to bottom, 
-                #000000 0%, 
-                #000000 30%, 
-                rgba(0, 0, 0, 0.4) 60%, 
-                rgba(0, 0, 0, 0) 100%), 
-                url('KOTA_UNGU.jpg') no-repeat center bottom; /* GANTI KOTA_UNGU.jpg dengan file gambar kamu */
-    
-    background-size: cover;
-    padding: 80px 10% 40px 10%;
 }
 
-.about-hero-text {
-    max-width: 650px;
-    margin-top: 20px;
+/* Kolom Teks (Kiri) */
+.about-left-content {
+    flex: 1;
+    max-width: 500px;
 }
 
-.about-hero-text h1 {
-    font-size: 4rem; 
+.about-left-content h1 {
+    font-size: 3.5rem;
     font-weight: 600;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     color: #ffffff;
 }
 
-.about-hero-text p {
-    font-size: 1.2rem;
+.about-left-content p {
+    font-size: 1.1rem;
     line-height: 1.6;
     color: #ffffff;
-    margin-bottom: 35px;
+    margin-bottom: 30px;
 }
 
-.about-contact {
+/* Bagian Email & Kontak */
+.about-contact-box {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 8px;
 }
 
-.about-contact .email-link {
+.about-contact-box .contact-label {
+    font-size: 1rem;
+    color: #ffffff;
+}
+
+.about-contact-box .email-text-link {
     color: #ffffff;
     text-decoration: underline;
+    font-size: 1rem;
+    font-weight: 600;
 }
 
-.about-hero-social {
+/* Kolom Gambar (Kanan) */
+.about-right-image {
+    flex: 1.2;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 12px;
+}
+
+.about-right-image img {
     width: 100%;
-    padding-top: 40px;
+    max-width: 650px;
+    height: auto;
+    object-fit: contain;
 }
 
-.about-hero-social a {
-    color: #ffffff;
-}
-
-/* --- AUTO LAYOUT HP (OTOMATIS MERAPAT DAN RESPONSIVE) --- */
+/* ===================================================
+   --- AUTO LAYOUT HP: OTOMATIS RUN TUT KE BAWAH ---
+   =================================================== */
 @media (max-width: 768px) {
-    .about-hero-container {
-        padding: 40px 6% 30px 6%;
-        background-position: center bottom;
+    .about-grid-container {
+        flex-direction: column; /* Melepas kolom horizontal, otomatis tumpuk vertikal */
+        min-height: auto;       /* Mencegah layar melar kosong di tengah */
+        padding: 40px 6%;
+        gap: 25px;              /* Menjaga jarak teks dan gambar agar tidak kejauhan */
     }
 
-    .about-hero-text h1 {
-        font-size: 2.8rem;
+    .about-left-content {
+        max-width: 100%;
     }
-    
-    .about-hero-text p {
-        font-size: 1.05rem;
+
+    .about-left-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .about-right-image {
+        width: 100%;
+    }
+
+    .about-right-image img {
+        max-width: 100%;        /* Gambar otomatis mengecil pas dengan lebar HP */
     }
 }
