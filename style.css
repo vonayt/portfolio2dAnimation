@@ -322,100 +322,124 @@ header {
    --- LAYOUT HALAMAN ABOUT ME
    =================================================== */
 
-/* Container Utama About Me */
-.about-container {
+/* ===================================================
+   --- LAYOUT BARU ABOUT ME (STORYBOARD OVERLAY) ---
+   =================================================== */
+
+.about-hero-container {
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
+    flex-direction: column;
     justify-content: space-between;
-    gap: 60px;          /* Jarak lega antara teks dan gambar */
-    padding: 80px 10%;  /* Memberikan whitespace khas editorial */
-    background-color: #000000;
+    min-height: 100vh;
     width: 100%;
+    position: relative;
+    
+    /* GANTI 'nama-ilustrasi-kamu.jpg' dengan nama file gambar Anda */
+    background: linear-gradient(to bottom, 
+                #000000 0%, 
+                #000000 25%, 
+                rgba(0, 0, 0, 0.4) 50%, 
+                rgba(0, 0, 0, 0) 100%), 
+                url('nama-ilustrasi-kamu.jpg') no-repeat center bottom;
+    
+    background-size: cover;
+    padding: 60px 10% 40px 10%;
 }
 
-/* Kolom Teks Profil */
-.about-text {
-    flex: 1;
-    max-width: 480px;   /* Membatasi lebar teks agar nyaman dibaca */
+.about-hero-text {
+    max-width: 650px;
+    margin-top: 20px;
 }
 
-/* Judul HELLO */
-.about-text h1 {
-    font-size: 3.5rem;
-    font-weight: 600;   /* Mengikuti font-weight Poppins Anda */
+.about-hero-text h1 {
+    font-size: 4rem;
+    font-weight: 600;
     letter-spacing: -1px;
-    margin-bottom: 25px;
-    text-transform: uppercase;
-}
-
-/* Deskripsi Diri */
-.about-text p {
-    font-family: 'Roboto', sans-serif; /* Menggunakan font Roboto Anda agar seimbang */
-    font-size: 1.05rem;
-    font-weight: 300;   /* Mode light tipis ala editorial */
-    line-height: 1.7;
-    color: #cccccc;     /* Abu-abu lembut agar elegan */
-    margin-bottom: 35px;
-}
-
-/* Link Kontak / Email */
-.contact-link {
-    display: inline-block;
+    margin-bottom: 30px;
     color: #ffffff;
-    text-decoration: none;
+}
+
+.about-hero-text p {
     font-family: 'Roboto', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 400;
-    text-transform: lowercase; /* Mengikuti style lowercase navigasi Anda */
-    border-bottom: 1.5px solid #ffffff; /* Garis bawah minimalis */
-    padding-bottom: 5px;
-    transition: all 0.3s ease;
+    font-size: 1.2rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: #ffffff;
+    margin-bottom: 40px;
 }
 
-.contact-link:hover {
-    color: #888888;
-    border-bottom-color: #888888;
-}
-
-/* Kolom Gambar/Ilustrasi */
-.about-image {
-    flex: 1.2;          /* Gambar sedikit lebih dominan */
+.about-contact {
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
+    gap: 5px;
 }
 
-.about-image img {
+.about-contact span {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    color: #ffffff;
+}
+
+.about-contact .email-link {
+    color: #ffffff;
+    text-decoration: underline;
+    font-size: 1rem;
+    word-break: break-all;
+    transition: color 0.3s ease;
+}
+
+.about-contact .email-link:hover {
+    color: #aaaaaa;
+}
+
+.about-hero-social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
     width: 100%;
-    max-width: 550px;
-    height: auto;
-    object-fit: cover;
-    border-radius: 2px; /* Pojok tajam/minimalis murni */
+    padding-top: 40px;
 }
 
-/* Responsif: Tampilan Tablet & Mobile */
-@media (max-width: 900px) {
-    .about-container {
-        flex-direction: column-reverse; /* Gambar pindah ke atas teks saat di HP */
-        gap: 40px;
-        padding: 40px 5%;
+.about-hero-social a {
+    color: #ffffff;
+    text-decoration: underline;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.about-hero-social a:hover {
+    color: #aaaaaa;
+}
+
+.about-hero-social .divider {
+    color: #ffffff;
+    font-size: 1rem;
+}
+
+/* Kunci Auto Layout: Hanya aktif di HP (di bawah 600px), Tablet aman ikut Desktop */
+@media (max-width: 600px) {
+    .about-hero-container {
+        padding: 40px 6% 30px 6%;
+        background-position: center bottom; 
     }
 
-    .about-text {
-        max-width: 100%; /* Teks melebar penuh di layar kecil */
+    .about-hero-text h1 {
+        font-size: 2.8rem;
+        margin-bottom: 20px;
     }
 
-    .about-text h1 {
-        font-size: 2.5rem;
-        margin-bottom: 15px;
-    }
-
-    .about-image {
-        justify-content: center;
-        width: 100%;
+    .about-hero-text p {
+        font-size: 1.05rem;
+        margin-bottom: 30px;
     }
     
-    .about-image img {
-        max-width: 100%; /* Gambar menyesuaikan lebar layar hp */
+    .about-hero-social {
+        gap: 8px;
+    }
+    
+    .about-hero-social a, 
+    .about-hero-social .divider {
+        font-size: 0.9rem;
     }
 }
