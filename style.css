@@ -318,3 +318,104 @@ header {
     font-size: 0.85rem;
     text-transform: lowercase;
 }
+/* ===================================================
+   --- LAYOUT HALAMAN ABOUT ME
+   =================================================== */
+
+/* Container Utama About Me */
+.about-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 60px;          /* Jarak lega antara teks dan gambar */
+    padding: 80px 10%;  /* Memberikan whitespace khas editorial */
+    background-color: #000000;
+    width: 100%;
+}
+
+/* Kolom Teks Profil */
+.about-text {
+    flex: 1;
+    max-width: 480px;   /* Membatasi lebar teks agar nyaman dibaca */
+}
+
+/* Judul HELLO */
+.about-text h1 {
+    font-size: 3.5rem;
+    font-weight: 600;   /* Mengikuti font-weight Poppins Anda */
+    letter-spacing: -1px;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}
+
+/* Deskripsi Diri */
+.about-text p {
+    font-family: 'Roboto', sans-serif; /* Menggunakan font Roboto Anda agar seimbang */
+    font-size: 1.05rem;
+    font-weight: 300;   /* Mode light tipis ala editorial */
+    line-height: 1.7;
+    color: #cccccc;     /* Abu-abu lembut agar elegan */
+    margin-bottom: 35px;
+}
+
+/* Link Kontak / Email */
+.contact-link {
+    display: inline-block;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    text-transform: lowercase; /* Mengikuti style lowercase navigasi Anda */
+    border-bottom: 1.5px solid #ffffff; /* Garis bawah minimalis */
+    padding-bottom: 5px;
+    transition: all 0.3s ease;
+}
+
+.contact-link:hover {
+    color: #888888;
+    border-bottom-color: #888888;
+}
+
+/* Kolom Gambar/Ilustrasi */
+.about-image {
+    flex: 1.2;          /* Gambar sedikit lebih dominan */
+    display: flex;
+    justify-content: flex-end;
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 550px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 2px; /* Pojok tajam/minimalis murni */
+}
+
+/* Responsif: Tampilan Tablet & Mobile */
+@media (max-width: 900px) {
+    .about-container {
+        flex-direction: column-reverse; /* Gambar pindah ke atas teks saat di HP */
+        gap: 40px;
+        padding: 40px 5%;
+    }
+
+    .about-text {
+        max-width: 100%; /* Teks melebar penuh di layar kecil */
+    }
+
+    .about-text h1 {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+    }
+
+    .about-image {
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .about-image img {
+        max-width: 100%; /* Gambar menyesuaikan lebar layar hp */
+    }
+}
