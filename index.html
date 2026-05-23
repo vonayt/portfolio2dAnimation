@@ -11,10 +11,10 @@
 
 <header>
     <nav>
-        <div class="logo">VonAyt</div>
+        <div class="logo">vonayt</div>
         <ul class="nav-links">
-            <li><a href="#" onclick="bukaHalaman('animation')">Animation</a></li>
-            <li><a href="#" onclick="bukaHalaman('about')">About Me</a></li>
+            <li><a href="javascript:void(0);" onclick="showPage('animation')">animation</a></li>
+            <li><a href="javascript:void(0);" onclick="showPage('about')">about me</a></li>
         </ul>
     </nav>
 </header>
@@ -156,28 +156,37 @@
     </div>
 
     <script src="script.js"></script>
-      <script>
+<script>
     function showPage(pageId) {
-        // 1. Ambil elemen grid video
-        const pageAnimation = document.getElementById('page-animation');
+        console.log("Tombol diklik, menuju ke: " + pageId); // Untuk cek di inspect elemen
         
-        // 2. Ambil elemen About Me (mencari ID #page-about atau class pembungkusnya)
+        const pageAnim = document.getElementById('page-animation');
         const pageAbout = document.getElementById('page-about') || 
                           document.querySelector('.about-grid-container') || 
                           document.querySelector('.about-hero-container');
 
-        // 3. Eksekusi sakelar pemindah halaman secara paksa
+        if (!pageAnim || !pageAbout) {
+            console.log("Error: Elemen halaman tidak ditemukan!");
+            return;
+        }
+
         if (pageId === 'animation') {
-            if (pageAnimation) pageAnimation.style.setProperty('display', 'grid', 'important');
-            if (pageAbout) pageAbout.style.setProperty('display', 'none', 'important');
+            pageAnim.style.setProperty('display', 'grid', 'important');
+            pageAbout.style.setProperty('display', 'none', 'important');
+            
+            pageAnim.classList.add('active-page');
+            pageAbout.classList.remove('active-page');
         } else if (pageId === 'about') {
-            if (pageAnimation) pageAnimation.style.setProperty('display', 'none', 'important');
-            if (pageAbout) pageAbout.style.setProperty('display', 'flex', 'important');
+            pageAnim.style.setProperty('display', 'none', 'important');
+            pageAbout.style.setProperty('display', 'flex', 'important');
+            
+            pageAbout.classList.add('active-page');
+            pageAnim.classList.remove('active-page');
         }
     }
 
-    // Memastikan saat web pertama kali dibuka, halaman video langsung muncul duluan
-    window.addEventListener('DOMContentLoaded', () => {
+    // Paksa jalan pas pertama kali buka web
+    document.addEventListener('DOMContentLoaded', () => {
         showPage('animation');
     });
 </script>
