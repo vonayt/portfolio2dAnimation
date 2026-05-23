@@ -411,7 +411,7 @@ header {
     .about-grid-container {
         flex-direction: column; /* Mengubah susunan menjadi tumpuk ke bawah di HP */
         padding: 40px 6%;
-        gap: 35px;
+        gap: 12px;
         justify-content: flex-start;
     }
 
