@@ -15,33 +15,81 @@ body {
 }
 
 /* --- HEADER --- */
+/* ===================================================
+   --- LAYOUT HEADER PREMIUM & RESPONSIVE (FIXED) ---
+   =================================================== */
+
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 5%;
-    background: #000;
     width: 100%;
+    background-color: #000000;
+    position: sticky;       /* Tetap menempel di atas pas di-scroll */
+    top: 0;
+    z-index: 1000;
 }
 
+header nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between; /* LOGO DI KIRI, MENU DI KANAN */
+    padding: 25px 5%;              /* Jarak pas dari tepi layar */
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Bagian Logo Kiri */
 .logo {
-    font-size: 1.2rem;
-    font-weight: 600;
-    text-transform: lowercase;
+    font-size: 1.8rem;             /* Ukuran mirip font contoh lu */
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: sans-serif;       /* Sesuaikan dengan font web lu */
+    letter-spacing: -0.5px;
 }
 
+/* Kotak List Menu Kanan */
 .nav-links {
     display: flex;
+    flex-direction: row;           /* MEMAKSA MENU TETAP SEJAJAR HORIZONTAL */
+    align-items: center;
     list-style: none;
-    gap: 20px;
+    margin: 0;
+    padding: 0;
+    gap: 30px;                     /* Jarak horizontal antarmenu */
 }
 
-.nav-links a {
-    color: #fff;
+.nav-links li a {
+    color: #ffffff;
     text-decoration: none;
-    font-family: 'Roboto', sans-serif;
-    font-size: 0.9rem;
-    text-transform: lowercase;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: opacity 0.2s ease;
+}
+
+/* Efek pas kursor menyentuh menu */
+.nav-links li a:hover {
+    opacity: 0.6;
+}
+
+/* ===================================================
+   --- SAKELAR RESPONSIVE UNTUK MODE HP ---
+   =================================================== */
+@media (max-width: 768px) {
+    header nav {
+        padding: 15px 6%;          /* Di HP padding sedikit lebih rapat */
+    }
+
+    .logo {
+        font-size: 1.4rem;         /* Ukuran logo mengecil pas di layar HP */
+    }
+
+    .nav-links {
+        gap: 15px;                 /* Jarak menu merapat otomatis agar muat di HP */
+    }
+
+    .nav-links li a {
+        font-size: 0.95rem;        /* Tulisan menu mengecil proporsional */
+    }
 }
 
 /* --- PERBAIKAN GRID & HOVER --- */
