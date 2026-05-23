@@ -156,31 +156,28 @@
     </div>
 
     <script src="script.js"></script>
-        <script>
-       
-        const btnAnim = document.querySelector('header nav ul li:nth-child(1) a');
-        const btnAbout = document.getElementById('nav-about');
-        
-        const pageAnim = document.getElementById('page-animation');
-        const pageAbout = document.getElementById('page-about');
+       <script>
+    function showPage(pageId) {
+        // 1. Ambil kedua elemen halaman berdasarkan class/ID-nya
+        const pageAnimation = document.getElementById('page-animation');
+        const pageAbout = document.querySelector('.about-grid-container');
 
-        
-        btnAbout.addEventListener('click', (e) => {
-            e.preventDefault();
-            pageAnim.style.display = 'none';
-            pageAbout.style.display = 'flex';
-            
-         
-            btnAbout.style.color = 'white';
-            btnAnim.style.color = '#666';
-       
-        btnAnim.addEventListener('click', (e) => {
-            e.preventDefault();
-            pageAbout.style.display = 'none';
-            pageAnim.style.display = 'grid';
-            
-            btnAnim.style.color = 'white';
-            btnAbout.style.color = '#666';
-    </script>
+        // 2. Logika sakelar pemindah halaman
+        if (pageId === 'animation') {
+            // Tampilkan animasi (grid), sembunyikan about me total
+            if (pageAnimation) pageAnimation.style.setProperty('display', 'grid', 'important');
+            if (pageAbout) pageAbout.style.setProperty('display', 'none', 'important');
+        } else if (pageId === 'about') {
+            // Sembunyikan animasi total, tampilkan about me (flex dua kolom)
+            if (pageAnimation) pageAnimation.style.setProperty('display', 'none', 'important');
+            if (pageAbout) pageAbout.style.setProperty('display', 'flex', 'important');
+        }
+    }
+
+    // Memastikan saat web pertama kali di-refresh, halaman animation yang muncul duluan
+    window.addEventListener('DOMContentLoaded', () => {
+        showPage('animation');
+    });
+</script>
 </body>
 </html>
