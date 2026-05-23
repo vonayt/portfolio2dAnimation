@@ -157,21 +157,6 @@
 
     <script src="script.js"></script>
     <script>
-        <script>
-    function bukaHalaman(namaHalaman) {
-        const pageAnim = document.getElementById('page-animation');
-        const pageAbout = document.querySelector('.about-grid-container');
-
-        if (namaHalaman === 'animation') {
-            pageAnim.style.display = 'grid';       /* Munculkan galeri video */
-            pageAbout.style.display = 'none';     /* Sembunyikan About Me total */
-        } else if (namaHalaman === 'about') {
-            pageAnim.style.display = 'none';      /* Sembunyikan galeri video total */
-            pageAbout.style.display = 'flex';     /* Munculkan About Me */
-        }
-    }
-    window.onload = function() {
-        bukaHalaman('animation');
        
         const btnAnim = document.querySelector('header nav ul li:nth-child(1) a');
         const btnAbout = document.getElementById('nav-about');
