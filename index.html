@@ -156,25 +156,27 @@
     </div>
 
     <script src="script.js"></script>
-       <script>
+      <script>
     function showPage(pageId) {
-        // 1. Ambil kedua elemen halaman berdasarkan class/ID-nya
+        // 1. Ambil elemen grid video
         const pageAnimation = document.getElementById('page-animation');
-        const pageAbout = document.querySelector('.about-grid-container');
+        
+        // 2. Ambil elemen About Me (mencari ID #page-about atau class pembungkusnya)
+        const pageAbout = document.getElementById('page-about') || 
+                          document.querySelector('.about-grid-container') || 
+                          document.querySelector('.about-hero-container');
 
-        // 2. Logika sakelar pemindah halaman
+        // 3. Eksekusi sakelar pemindah halaman secara paksa
         if (pageId === 'animation') {
-            // Tampilkan animasi (grid), sembunyikan about me total
             if (pageAnimation) pageAnimation.style.setProperty('display', 'grid', 'important');
             if (pageAbout) pageAbout.style.setProperty('display', 'none', 'important');
         } else if (pageId === 'about') {
-            // Sembunyikan animasi total, tampilkan about me (flex dua kolom)
             if (pageAnimation) pageAnimation.style.setProperty('display', 'none', 'important');
             if (pageAbout) pageAbout.style.setProperty('display', 'flex', 'important');
         }
     }
 
-    // Memastikan saat web pertama kali di-refresh, halaman animation yang muncul duluan
+    // Memastikan saat web pertama kali dibuka, halaman video langsung muncul duluan
     window.addEventListener('DOMContentLoaded', () => {
         showPage('animation');
     });
