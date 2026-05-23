@@ -317,8 +317,124 @@ header {
     text-decoration: none;
     font-size: 0.85rem;
     text-transform: lowercase;
+    
 }
 /* ===================================================
    --- LAYOUT HALAMAN ABOUT ME
    =================================================== */
 
+/* ===================================================
+   --- LAYOUT 2 KOLOM MINIMALIS (TEKS & GAMBAR) ---
+   =================================================== */
+
+/* Container Utama: Membagi layar jadi 2 kolom (Flexbox) */
+.about-grid-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Membuat teks di kiri sejajar vertikal dengan tengah gambar */
+    justify-content: space-between;
+    min-height: calc(100vh - 70px); /* Menghitung sisa tinggi layar setelah dipotong header */
+    width: 100%;
+    background-color: #000000;
+    padding: 40px 8%; /* Whitespace di kanan kiri halaman */
+    gap: 50px; /* Jarak aman antara kolom teks dan gambar */
+}
+
+/* --- KOLOM KIRI (TEKS) --- */
+.about-left-content {
+    flex: 1;
+    max-width: 500px; /* Membatasi lebar teks agar rapi dan tidak molor */
+}
+
+.about-left-content h1 {
+    font-size: 3.5rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+    letter-spacing: -0.5px;
+}
+
+.about-left-content p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #ffffff;
+    margin-bottom: 30px;
+}
+
+/* Box Kontak */
+.about-contact-box {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.about-contact-box .contact-label {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    color: #ffffff;
+}
+
+.about-contact-box .email-text-link {
+    color: #ffffff;
+    text-decoration: none; /* Menghapus garis bawah bawaan agar bersih */
+    font-size: 1rem;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.about-contact-box .email-text-link:hover {
+    color: #aaaaaa; /* Berubah abu-abu lembut saat kursor di atasnya */
+}
+
+/* --- KOLOM KANAN (GAMBAR) --- */
+.about-right-image {
+    flex: 1.2; /* Kolom gambar dibuat sedikit lebih lebar dari kolom teks */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-right-image img {
+    width: 100%;
+    max-width: 650px; /* Batas maksimal lebar gambar di desktop */
+    height: auto;
+    object-fit: contain; /* Memastikan gambar Anda utuh tidak terpotong */
+    border: none;
+}
+
+/* ===================================================
+   --- AUTO LAYOUT RESPONSIVE UNTUK MOBILE & TABLET ---
+   =================================================== */
+
+/* Sesuai request: Tablet tetap ikut Desktop, aturan ini HANYA aktif di HP (600px kebawah) */
+@media (max-width: 600px) {
+    .about-grid-container {
+        flex-direction: column; /* Mengubah susunan menjadi tumpuk ke bawah di HP */
+        padding: 40px 6%;
+        gap: 35px;
+        justify-content: flex-start;
+    }
+
+    .about-left-content {
+        max-width: 100%; /* Teks memenuhi lebar layar HP */
+        text-align: left;
+    }
+
+    .about-left-content h1 {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+    }
+
+    .about-left-content p {
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+
+    .about-right-image {
+        width: 100%;
+    }
+
+    .about-right-image img {
+        max-width: 100%; /* Gambar otomatis mengecil proporsional di HP */
+    }
+}
