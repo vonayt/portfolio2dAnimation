@@ -159,6 +159,11 @@ header nav {
     inset: 0;
     background: rgba(0, 0, 0, 0.7);
     display: flex;
+    flex-direction: column; /* Taruh di sini */
+    justify-content: center; /* Opsional: agar teks berada di tengah secara vertikal */
+    align-items: center;     /* Opsional: agar teks berada di tengah secara horizontal */
+    /* ... biarkan kode Anda yang lain tetap di bawahnya ... */
+}
     justify-content: center;
     align-items: center;
     opacity: 0;
